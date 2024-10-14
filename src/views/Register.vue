@@ -2,7 +2,7 @@
   <div class="register-page">
     <div class="register-container">
       <h2 class="register-title">
-        Register
+        Create an account
       </h2>  
       <form @submit.prevent="register">
         <div class="register-form">
@@ -23,20 +23,17 @@
             required
           >
         </div>
-        <div class="action-container">
-          <button
-            type="submit"
-            class="register-button"
-          >
-            Register
-          </button>
-          <router-link
-            to="/login"
-            class="login-link"
-          >
-            Back to Login
+        <button
+          type="submit"
+          class="register-button"
+        >
+          Register
+        </button>
+        <p class="back-to-login">
+          Already have an account? <router-link to="/login">
+            Log in
           </router-link>
-        </div>
+        </p>
       </form>
     </div>
   </div>
@@ -58,13 +55,11 @@
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, this.email, this.password)
           .then((userCredential) => {
-            // User created successfully  
             const user = userCredential.user;
             alert(`Welcome, ${user.email}! Your account has been created.`);
             this.$router.push('/');
           })
           .catch((error) => {
-            // Handle errors  
             const errorCode = error.code;
             const errorMessage = error.message;
             alert(`Error: ${errorCode} - ${errorMessage}`);
@@ -86,12 +81,12 @@
 }
 
 .register-container {
-  width: 400px; /* Set a fixed width for the container */
+  width: 400px; 
   padding: 20px;
   background-color: white;
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  border: 1px solid #ddd; /* Light border */
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #ddd; 
   text-align: center;
 }
 
@@ -111,19 +106,18 @@ input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background-color: #fefae0;
+  background-color: #e9ecef;
   box-sizing: border-box;
 }
 
 .register-button {
   margin-top: 20px;
-  width: 100px;
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   background-color: #d08a2d;
   color: white;
   border: none;
   border-radius: 5px;
-  border: 1px solid #ccc;
   cursor: pointer;
   font-size: 16px;
 }
@@ -132,22 +126,14 @@ input {
   color: #c07522;
 }
 
-.action-container{
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  width: 100%;
-}
-
-.login-link {
+.back-to-login a {
   margin-top: 10%;
   color: #c07522;
   text-decoration: underline;
   cursor: pointer;
-  text-align: right;
 }
 
-.login-link:hover {
+.back-to-login a:hover {
   color: black
 }
 
