@@ -7,7 +7,7 @@
       <div class="login-description">
         Sign in to your account
       </div>
-
+  
       <form @submit.prevent="login">
         <div class="form-group">
           <input
@@ -32,50 +32,66 @@
           class="login-button"
         >
           Login
-        </button>
-
+        </button> <hr>
+  
         <p class="password-reset-link">
-          Forgot your password? Click <router-link to="register">
-            here
+          Forgotten your login details? <router-link to="/reset-password">
+            Click here
           </router-link>
           to reset
+        </p> 
+  
+        <p class="register-link">
+          New user? <router-link to="register">
+            Create a new account
+          </router-link> !
         </p>
-
-        <router-link
-          to="/register"
-        >
-          <button class="register-button">
-            Register New Account
-          </button>
-        </router-link>
       </form>
+      <div id="firebaseui-auth-container" />
     </div>
   </div>
 </template>
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebase from '@/uifire.js'
+import 'firebase/compat/auth';
+import * as firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css'
 
 export default {
-  name: 'LoginView',
-  data() {
-    return {
-      email: '',
-      password: ''  
-    }
-  },
-  methods: {
-    login() {
+    name:"LoginComponent",
+
+    data() {
+        return {
+            email: '',
+            password: '',
+        };
+    },
+    mounted() {
+        var ui = firebaseui.auth.AuthUI.getInstance();
+        if (!ui){
+            ui = new firebaseui.auth.AuthUI(firebase.auth());
+        }
+        var uiConfig = {
+            signInFlow: 'popup',
+            signInSuccessUrl: '/home',
+            signInOptions: [
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            ]
+        };
+        ui.start("#firebaseui-auth-container", uiConfig)
+    },
+    methods: {
+        login() {
       const auth = getAuth();
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then((userCredential) => {
-          // User logged in successfully
           const user = userCredential.user;
           alert(`Welcome back, ${user.email}!`);
           this.$router.push('/home');
         })
         .catch((error) => {
-          // Handle errors
           const errorCode = error.code;
           const errorMessage = error.message;
           alert(`Error: ${errorCode} - ${errorMessage}`);
@@ -84,6 +100,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 .login-page {
@@ -150,14 +167,16 @@ input {
   color: black;
 }
 
-.register-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #faedcd;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+.register-link {
+  text-align: left
 }
+.register-link a {
+  color: #d08a2d;
+  text-decoration: underline;
+}
+
+.register-link a:hover {
+  color: black;
+}
+
 </style>
