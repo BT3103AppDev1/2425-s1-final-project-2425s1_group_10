@@ -1,0 +1,452 @@
+[
+    {
+        "product_name": "Tablet Air",
+        "sku": "INV-00001",
+        "category": "Tablets",
+        "price": 400,
+        "stock_quantity": 91,
+        "low_stock_threshold": 17,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00002",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 93,
+        "low_stock_threshold": 20,
+        "supplier": "Supplier 2"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00003",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 37,
+        "low_stock_threshold": 18,
+        "supplier": "Supplier 7"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00004",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 6,
+        "low_stock_threshold": 10,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00005",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 71,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 3"
+    },
+    {
+        "product_name": "Blender SmoothX",
+        "sku": "INV-00006",
+        "category": "Home Appliances",
+        "price": 100,
+        "stock_quantity": 89,
+        "low_stock_threshold": 5,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Laptop B",
+        "sku": "INV-00007",
+        "category": "Laptops",
+        "price": 1000,
+        "stock_quantity": 94,
+        "low_stock_threshold": 7,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Blender SmoothX",
+        "sku": "INV-00008",
+        "category": "Home Appliances",
+        "price": 100,
+        "stock_quantity": 79,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 10"
+    },
+    {
+        "product_name": "Vacuum CleanMaster",
+        "sku": "INV-00009",
+        "category": "Home Appliances",
+        "price": 300,
+        "stock_quantity": 74,
+        "low_stock_threshold": 19,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Tablet Air",
+        "sku": "INV-00010",
+        "category": "Tablets",
+        "price": 400,
+        "stock_quantity": 50,
+        "low_stock_threshold": 11,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Laptop A",
+        "sku": "INV-00011",
+        "category": "Laptops",
+        "price": 800,
+        "stock_quantity": 68,
+        "low_stock_threshold": 17,
+        "supplier": "Supplier 3"
+    },
+    {
+        "product_name": "Blender SmoothX",
+        "sku": "INV-00012",
+        "category": "Home Appliances",
+        "price": 100,
+        "stock_quantity": 68,
+        "low_stock_threshold": 15,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00013",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 35,
+        "low_stock_threshold": 17,
+        "supplier": "Supplier 3"
+    },
+    {
+        "product_name": "Tablet Pro",
+        "sku": "INV-00014",
+        "category": "Tablets",
+        "price": 500,
+        "stock_quantity": 95,
+        "low_stock_threshold": 10,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Tablet Air",
+        "sku": "INV-00015",
+        "category": "Tablets",
+        "price": 400,
+        "stock_quantity": 10,
+        "low_stock_threshold": 15,
+        "supplier": "Supplier 8"
+    },
+    {
+        "product_name": "Tablet Pro",
+        "sku": "INV-00016",
+        "category": "Tablets",
+        "price": 500,
+        "stock_quantity": 94,
+        "low_stock_threshold": 20,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Vacuum CleanMaster",
+        "sku": "INV-00017",
+        "category": "Home Appliances",
+        "price": 300,
+        "stock_quantity": 23,
+        "low_stock_threshold": 6,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Vacuum CleanMaster",
+        "sku": "INV-00018",
+        "category": "Home Appliances",
+        "price": 300,
+        "stock_quantity": 86,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Laptop A",
+        "sku": "INV-00019",
+        "category": "Laptops",
+        "price": 800,
+        "stock_quantity": 33,
+        "low_stock_threshold": 19,
+        "supplier": "Supplier 8"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00020",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 29,
+        "low_stock_threshold": 5,
+        "supplier": "Supplier 8"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00021",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 38,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 9"
+    },
+    {
+        "product_name": "Tablet Air",
+        "sku": "INV-00022",
+        "category": "Tablets",
+        "price": 400,
+        "stock_quantity": 15,
+        "low_stock_threshold": 11,
+        "supplier": "Supplier 7"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00023",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 3,
+        "low_stock_threshold": 13,
+        "supplier": "Supplier 8"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00024",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 13,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 7"
+    },
+    {
+        "product_name": "Laptop B",
+        "sku": "INV-00025",
+        "category": "Laptops",
+        "price": 1000,
+        "stock_quantity": 8,
+        "low_stock_threshold": 7,
+        "supplier": "Supplier 9"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00026",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 77,
+        "low_stock_threshold": 9,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Smartphone X",
+        "sku": "INV-00027",
+        "category": "Smartphones",
+        "price": 600,
+        "stock_quantity": 82,
+        "low_stock_threshold": 5,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Laptop B",
+        "sku": "INV-00028",
+        "category": "Laptops",
+        "price": 1000,
+        "stock_quantity": 31,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 6"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00029",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 80,
+        "low_stock_threshold": 7,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Tablet Air",
+        "sku": "INV-00030",
+        "category": "Tablets",
+        "price": 400,
+        "stock_quantity": 84,
+        "low_stock_threshold": 18,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Vacuum CleanMaster",
+        "sku": "INV-00031",
+        "category": "Home Appliances",
+        "price": 300,
+        "stock_quantity": 72,
+        "low_stock_threshold": 11,
+        "supplier": "Supplier 6"
+    },
+    {
+        "product_name": "Tablet Pro",
+        "sku": "INV-00032",
+        "category": "Tablets",
+        "price": 500,
+        "stock_quantity": 68,
+        "low_stock_threshold": 11,
+        "supplier": "Supplier 7"
+    },
+    {
+        "product_name": "Laptop A",
+        "sku": "INV-00033",
+        "category": "Laptops",
+        "price": 800,
+        "stock_quantity": 70,
+        "low_stock_threshold": 15,
+        "supplier": "Supplier 3"
+    },
+    {
+        "product_name": "Smartphone Y",
+        "sku": "INV-00034",
+        "category": "Smartphones",
+        "price": 700,
+        "stock_quantity": 58,
+        "low_stock_threshold": 17,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Vacuum CleanMaster",
+        "sku": "INV-00035",
+        "category": "Home Appliances",
+        "price": 300,
+        "stock_quantity": 34,
+        "low_stock_threshold": 18,
+        "supplier": "Supplier 3"
+    },
+    {
+        "product_name": "Tablet Pro",
+        "sku": "INV-00036",
+        "category": "Tablets",
+        "price": 500,
+        "stock_quantity": 100,
+        "low_stock_threshold": 6,
+        "supplier": "Supplier 8"
+    },
+    {
+        "product_name": "Vacuum CleanMaster",
+        "sku": "INV-00037",
+        "category": "Home Appliances",
+        "price": 300,
+        "stock_quantity": 35,
+        "low_stock_threshold": 8,
+        "supplier": "Supplier 3"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00038",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 73,
+        "low_stock_threshold": 19,
+        "supplier": "Supplier 7"
+    },
+    {
+        "product_name": "Blender SmoothX",
+        "sku": "INV-00039",
+        "category": "Home Appliances",
+        "price": 100,
+        "stock_quantity": 91,
+        "low_stock_threshold": 5,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Tablet Pro",
+        "sku": "INV-00040",
+        "category": "Tablets",
+        "price": 500,
+        "stock_quantity": 90,
+        "low_stock_threshold": 16,
+        "supplier": "Supplier 2"
+    },
+    {
+        "product_name": "Tablet Pro",
+        "sku": "INV-00041",
+        "category": "Tablets",
+        "price": 500,
+        "stock_quantity": 4,
+        "low_stock_threshold": 20,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Laptop A",
+        "sku": "INV-00042",
+        "category": "Laptops",
+        "price": 800,
+        "stock_quantity": 64,
+        "low_stock_threshold": 5,
+        "supplier": "Supplier 1"
+    },
+    {
+        "product_name": "Laptop B",
+        "sku": "INV-00043",
+        "category": "Laptops",
+        "price": 1000,
+        "stock_quantity": 22,
+        "low_stock_threshold": 15,
+        "supplier": "Supplier 7"
+    },
+    {
+        "product_name": "Laptop B",
+        "sku": "INV-00044",
+        "category": "Laptops",
+        "price": 1000,
+        "stock_quantity": 80,
+        "low_stock_threshold": 12,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00045",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 79,
+        "low_stock_threshold": 16,
+        "supplier": "Supplier 10"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00046",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 65,
+        "low_stock_threshold": 16,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Tablet Air",
+        "sku": "INV-00047",
+        "category": "Tablets",
+        "price": 400,
+        "stock_quantity": 51,
+        "low_stock_threshold": 17,
+        "supplier": "Supplier 2"
+    },
+    {
+        "product_name": "Blender SmoothX",
+        "sku": "INV-00048",
+        "category": "Home Appliances",
+        "price": 100,
+        "stock_quantity": 45,
+        "low_stock_threshold": 19,
+        "supplier": "Supplier 4"
+    },
+    {
+        "product_name": "Laptop B",
+        "sku": "INV-00049",
+        "category": "Laptops",
+        "price": 1000,
+        "stock_quantity": 91,
+        "low_stock_threshold": 11,
+        "supplier": "Supplier 5"
+    },
+    {
+        "product_name": "Charger Fast",
+        "sku": "INV-00050",
+        "category": "Accessories",
+        "price": 30,
+        "stock_quantity": 35,
+        "low_stock_threshold": 20,
+        "supplier": "Supplier 10"
+    }
+]

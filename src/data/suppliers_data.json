@@ -1,0 +1,92 @@
+[
+    {
+        "supplier_id": 1,
+        "supplier_name": "Supplier 1",
+        "contact_person": "Person 1",
+        "phone_number": "123-456-0001",
+        "email": "contact1@supplier.com",
+        "products_supplied": "Home Appliances",
+        "last_order_date": "2024-10-18"
+    },
+    {
+        "supplier_id": 2,
+        "supplier_name": "Supplier 2",
+        "contact_person": "Person 2",
+        "phone_number": "123-456-0002",
+        "email": "contact2@supplier.com",
+        "products_supplied": "Smartphones",
+        "last_order_date": "2024-09-28"
+    },
+    {
+        "supplier_id": 3,
+        "supplier_name": "Supplier 3",
+        "contact_person": "Person 3",
+        "phone_number": "123-456-0003",
+        "email": "contact3@supplier.com",
+        "products_supplied": "Tablets",
+        "last_order_date": "2024-10-02"
+    },
+    {
+        "supplier_id": 4,
+        "supplier_name": "Supplier 4",
+        "contact_person": "Person 4",
+        "phone_number": "123-456-0004",
+        "email": "contact4@supplier.com",
+        "products_supplied": "Smartphones",
+        "last_order_date": "2024-10-05"
+    },
+    {
+        "supplier_id": 5,
+        "supplier_name": "Supplier 5",
+        "contact_person": "Person 5",
+        "phone_number": "123-456-0005",
+        "email": "contact5@supplier.com",
+        "products_supplied": "Smartphones",
+        "last_order_date": "2024-10-08"
+    },
+    {
+        "supplier_id": 6,
+        "supplier_name": "Supplier 6",
+        "contact_person": "Person 6",
+        "phone_number": "123-456-0006",
+        "email": "contact6@supplier.com",
+        "products_supplied": "Smartphones",
+        "last_order_date": "2024-10-01"
+    },
+    {
+        "supplier_id": 7,
+        "supplier_name": "Supplier 7",
+        "contact_person": "Person 7",
+        "phone_number": "123-456-0007",
+        "email": "contact7@supplier.com",
+        "products_supplied": "Accessories",
+        "last_order_date": "2024-10-07"
+    },
+    {
+        "supplier_id": 8,
+        "supplier_name": "Supplier 8",
+        "contact_person": "Person 8",
+        "phone_number": "123-456-0008",
+        "email": "contact8@supplier.com",
+        "products_supplied": "Accessories",
+        "last_order_date": "2024-09-22"
+    },
+    {
+        "supplier_id": 9,
+        "supplier_name": "Supplier 9",
+        "contact_person": "Person 9",
+        "phone_number": "123-456-0009",
+        "email": "contact9@supplier.com",
+        "products_supplied": "Laptops",
+        "last_order_date": "2024-09-23"
+    },
+    {
+        "supplier_id": 10,
+        "supplier_name": "Supplier 10",
+        "contact_person": "Person 10",
+        "phone_number": "123-456-0010",
+        "email": "contact10@supplier.com",
+        "products_supplied": "Tablets",
+        "last_order_date": "2024-10-13"
+    }
+]
