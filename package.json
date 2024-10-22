@@ -12,7 +12,8 @@
     "firebase": "^9.23.0",
     "firebaseui": "^0.600.0",
     "vue": "^3.2.13",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vue-sidebar-menu": "^5.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.8",
