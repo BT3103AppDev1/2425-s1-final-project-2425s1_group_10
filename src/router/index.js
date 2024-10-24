@@ -3,6 +3,7 @@ import LoginView from "@/components/Login.vue";
 import RegisterView from "@/views/Register.vue";
 import ResetPasswordView from "@/components/ResetPassword.vue"; 
 import HomeView from "@/views/Home.vue";
+import MainDashboard from '@/views/MainDashboard.vue';
 
 const routes = [
   {
@@ -24,6 +25,10 @@ const routes = [
   {
     path: "/home",
     component: HomeView,
+  },
+  {
+    path: '/dashboard', 
+    component: MainDashboard, 
   },
 ];
 
