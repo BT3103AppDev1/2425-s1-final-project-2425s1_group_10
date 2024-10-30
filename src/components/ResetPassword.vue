@@ -1,5 +1,10 @@
 <template>
   <div class="reset-password-page">
+    <img
+      src="@/assets/MainLogo.png"
+      alt="Main Logo"
+      class="main-logo"
+    >
     <div class="reset-password-container">
       <h2 class="reset-password-title">
         Reset Password
@@ -62,6 +67,8 @@
     align-items: center;
     height: 100vh;
     background-color: #faedcd;
+    flex-direction: column;
+
   }
   
   .reset-password-container {
@@ -102,5 +109,10 @@
   .back-to-login a:hover {
     color: black;
   }
+
+  .main-logo {
+  width: 300px; 
+  border-radius: 10px;
+}
   </style>
   

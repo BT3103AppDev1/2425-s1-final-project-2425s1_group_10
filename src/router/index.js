@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "@/components/Login.vue";
 import RegisterView from "@/views/Register.vue";
 import ResetPasswordView from "@/components/ResetPassword.vue"; 
-import HomeView from "@/views/Home.vue";
 import MainDashboard from '@/views/MainDashboard.vue';
+import NotFound from "@/views/NotFound.vue";
 
 const routes = [
   {
@@ -23,12 +23,13 @@ const routes = [
     component: ResetPasswordView,
   },
   {
-    path: "/home",
-    component: HomeView,
-  },
-  {
     path: '/dashboard', 
     component: MainDashboard, 
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound,
   },
 ];
 

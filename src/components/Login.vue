@@ -1,5 +1,10 @@
 <template>
   <div class="login-page">
+    <img
+      src="@/assets/MainLogo.png"
+      alt="Main Logo"
+      class="main-logo"
+    >
     <div class="login-container">
       <h2 class="login-title">
         Login
@@ -59,6 +64,7 @@ import 'firebase/compat/auth';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
+
 export default {
     name:"LoginComponent",
 
@@ -75,7 +81,7 @@ export default {
         }
         var uiConfig = {
             signInFlow: 'popup',
-            signInSuccessUrl: '/home',
+            signInSuccessUrl: '/dashboard',
             signInOptions: [
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             ]
@@ -83,19 +89,47 @@ export default {
         ui.start("#firebaseui-auth-container", uiConfig)
     },
     methods: {
-        login() {
+        async login() {
       const auth = getAuth();
-      signInWithEmailAndPassword(auth, this.email, this.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, this.email, this.password);
+        const user = userCredential.user;
+
+        if (!user.emailVerified) {
+          alert("Please verify your email before logging in.");
+          await auth.signOut(); 
+          return;
+        }
+
           alert(`Welcome back, ${user.email}!`);
-          this.$router.push('/home');
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(`Error: ${errorCode} - ${errorMessage}`);
-        });
+          this.$router.push('/dashboard');
+        } catch(error) {
+        
+          switch (error.code) {
+          case'auth/invalid-login-credentials':
+            this.errorMessage = 'Username or password does not match our records. Please try again';
+            break;
+          case 'auth/invalid-email':
+            this.errorMessage = 'Invalid email address. Please check and try again.';
+            break;
+          case 'auth/user-disabled':
+            this.errorMessage = 'This account has been disabled. Please contact support.';
+            break;
+          case 'auth/user-not-found':
+            this.errorMessage = 'No account found with this email. Please sign up.';
+            break;
+          case 'auth/wrong-password':
+            this.errorMessage = 'Incorrect password. Please try again.';
+            break;
+          default:
+            this.errorMessage = 'Login failed. Please try again later.';
+        }
+        alert(this.errorMessage);
+
+
+          
+        }
     }
   }
 }
@@ -105,6 +139,7 @@ export default {
 <style scoped>
 .login-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -112,12 +147,12 @@ export default {
 }
 
 .login-container {
-  width: 400px; /* Set a fixed width for the container */
+  width: 400px; 
   padding: 20px;
   background-color: white;
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  border: 1px solid #ddd; /* Light border */
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #ddd; 
   text-align: center;
 }
 
@@ -177,6 +212,11 @@ input {
 
 .register-link a:hover {
   color: black;
+}
+
+.main-logo {
+  width: 300px; 
+  border-radius: 10px;
 }
 
 </style>

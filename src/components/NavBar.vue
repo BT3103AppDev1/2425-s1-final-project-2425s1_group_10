@@ -19,7 +19,6 @@
   import OrdersIcon from '@/assets/Orders.png'
   import SettingsIcon from '@/assets/Settings.png'
   import HelpIcon from '@/assets/Help.png'
-  import LogoutIcon from '@/assets/Logout.png'
 
   
   export default {
@@ -96,23 +95,12 @@
                 element: 'img',
                 attributes: {src: HelpIcon },
             }
-          },
-          {
-            href: '/Login',
-            title: 'Log Out',
-            icon: {
-                element: 'img',
-                attributes: {src: LogoutIcon },
-            }
-          },
-
-        ]
-      }
-    },
-    
-  }
-  </script>
-
+          }
+      ]
+    };
+  },
+};
+</script>
 <style scoped>
 .v-sidebar-menu {
   --vsm-primary-color: #ff5733;
