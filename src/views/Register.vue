@@ -1,11 +1,15 @@
 <template>
   <div class="register-page">
+    <img
+      src="@/assets/MainLogo.png"
+      alt="Main Logo"
+      class="main-logo"
+    >
     <div class="register-container">
       <h2 class="register-title">
         Create an account
       </h2>
       <form @submit.prevent="register">
-        <!-- Simplified structure with fewer divs and added spacing -->
         <input
           id="email"
           v-model="email"
@@ -37,6 +41,17 @@
           placeholder="Password"
           required
         >
+        <p class="password-requirements-title">
+          Your password must have:
+        </p>
+        <ul class="password-requirements">
+          <li :class="{ valid: isLengthValid }">
+            At least 8 characters
+          </li>
+          <li :class="{ valid: hasLettersNumbersSpecial }">
+            Uppercase, numbers, and special characters
+          </li>
+        </ul>
 
         <input
           id="checkPassword"
@@ -71,7 +86,7 @@
 </template>
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 export default {
@@ -85,6 +100,16 @@ export default {
       checkPassword: '',
       passwordError: false,
     };
+  },
+  computed: {
+    isLengthValid() {
+      return this.password.length >= 8 && this.password.length <= 20;
+    },
+    hasLettersNumbersSpecial() {
+      return /[A-Za-z]/.test(this.password) &&
+             /[0-9]/.test(this.password) &&
+             /[!@#$%^&*(),.?":{}|<>]/.test(this.password);
+    }
   },
   methods: {
     async register() {
@@ -109,10 +134,20 @@ export default {
           companyName: this.companyName,
         });
 
-        alert(`Welcome, ${user.email}! Your account has been created.`);
-        this.$router.push('/');
+        await sendEmailVerification(user);
+        alert(`Your account has been created. A verification email has been sent to ${this.email}. Please check your inbox to verify your account.`);
+
+        this.$router.push('/'); 
       } catch (error) {
-        alert(`Error: ${error.code} - ${error.message}`);
+        
+        switch (error.code) {
+          case'auth/email-already-in-use':
+            this.errorMessage = 'Email is already in use. Please login, or reset password';
+            break;
+          default:
+            this.errorMessage = 'Registration failed. Please try again later.';
+        }
+        alert(this.errorMessage);
       }
     },
   },
@@ -122,6 +157,7 @@ export default {
 <style scoped>
 .register-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -141,7 +177,8 @@ export default {
 input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px; 
+  margin-bottom: 7.5px; 
+  margin-top: 7.5px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #e9ecef;
@@ -170,5 +207,36 @@ input {
 .password-error {
   color: red;
   text-align: left;
+  font-size: 0.9em;
 }
+.main-logo {
+  width: 300px; 
+  border-radius: 10px;
+}
+
+.password-requirements-title {
+  font-weight: bold;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-size: 0.9em;
+}
+
+.password-requirements {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  margin: 0;
+  font-size: 0.9em;
+
+}
+
+.password-requirements li {
+  color: red;
+}
+
+.password-requirements li.valid {
+  color: green;
+}
+
+
 </style>
