@@ -2,14 +2,14 @@
     <div
     v-if="!user"
     style = "text-align:center;"
-    >
+    > 
   <NoAccess />
   </div>
   
     <div v-if ="user" class="app-layout">
       <NavBar />
       <Logo />
-  
+   
       <!-- Centering Container -->
       <div class="center-container">
         <div class="content">

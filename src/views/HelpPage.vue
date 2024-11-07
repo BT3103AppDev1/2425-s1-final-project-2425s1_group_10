@@ -4,14 +4,14 @@
     style = "text-align:center;"
     >
   <NoAccess />
-  </div>
+  </div> 
       <div v-if="user" class="help-page">
           <NavBar />
           <Logo /> 
   
          
         <h1>Help & Support</h1>
-   
+    
         <!-- FAQ Section -->
         <div class="faq-container">
           <h2>Frequently Asked Questions (FAQ)</h2>
