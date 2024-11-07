@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Widget A",
+      "sku": "WIDG-001",
+      "currentStock": 12,
+      "stockLevel": 50,
+      "status": "Low Stock",
+      "lastReorderDate": "2024-09-18"
+    },
+    {
+      "name": "Gadget X",
+      "sku": "GADG-124",
+      "currentStock": 5,
+      "stockLevel": 40,
+      "status": "Critical Low",
+      "lastReorderDate": "2024-09-10"
+    },
+    {
+      "name": "USB Cable 3-Pack",
+      "sku": "USBC-402",
+      "currentStock": 500,
+      "stockLevel": 100,
+      "status": "Surplus",
+      "lastReorderDate": "2024-08-01"
+    },
+    {
+      "name": "Bluetooth Speaker",
+      "sku": "BLSP-943",
+      "currentStock": 320,
+      "stockLevel": 150,
+      "status": "Excess Stock",
+      "lastReorderDate": "2024-08-28"
+    },
+    {
+      "name": "Battery Pack B",
+      "sku": "BATP-765",
+      "currentStock": 9,
+      "stockLevel": 30,
+      "status": "Low Stock",
+      "lastReorderDate": "2024-09-22"
+    },
+    {
+      "name": "Portable Charger",
+      "sku": "PCHG-129",
+      "currentStock": 15,
+      "stockLevel": 60,
+      "status": "Low Stock",
+      "lastReorderDate": "2024-10-02"
+    },
+    {
+      "name": "Phone Stand Z",
+      "sku": "PHST-303",
+      "currentStock": 800,
+      "stockLevel": 300,
+      "status": "Surplus",
+      "lastReorderDate": "2024-08-15"
+    },
+    {
+      "name": "Tablet Cover M",
+      "sku": "TBCM-872",
+      "currentStock": 40,
+      "stockLevel": 120,
+      "status": "Excess Stock",
+      "lastReorderDate": "2024-09-05"
+    },
+    {
+      "name": "Monitor Stand",
+      "sku": "MOST-544",
+      "currentStock": 22,
+      "stockLevel": 70,
+      "status": "Low Stock",
+      "lastReorderDate": "2024-09-27"
+    },
+    {
+      "name": "Wireless Earbuds",
+      "sku": "WLEB-601",
+      "currentStock": 200,
+      "stockLevel": 150,
+      "status": "Excess Stock",
+      "lastReorderDate": "2024-09-01"
+    }
+  ]
+  
