@@ -4,6 +4,8 @@ import RegisterView from "@/views/Register.vue";
 import ResetPasswordView from "@/components/ResetPassword.vue"; 
 import MainDashboard from '@/views/MainDashboard.vue';
 import NotFound from "@/views/NotFound.vue";
+import SalesPage from "@/views/SalesPage.vue";
+import HelpPage from "@/views/HelpPage.vue";
 
 const routes = [
   {
@@ -30,6 +32,14 @@ const routes = [
     path: '/:catchAll(.*)',
     name: 'NotFound',
     component: NotFound,
+  },
+  {
+    path: "/sales",
+    component: SalesPage,
+  },
+  {
+    path: "/help",
+    component: HelpPage,
   },
 ];
 
