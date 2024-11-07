@@ -4,7 +4,7 @@
   
   <script>
   import { ref, get, child } from 'firebase/database';
-  import { salesDatabase } from './firebaseSales'; // Correct Fi
+  import { salesDatabase } from './firebaseSales'; 
   import { reactive } from 'vue';
   console.log("in App")
   export default{
