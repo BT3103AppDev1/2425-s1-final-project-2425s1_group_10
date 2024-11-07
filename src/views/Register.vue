@@ -238,5 +238,39 @@ input {
   color: green;
 }
 
+@media (max-width: 480px) {
+  .register-page {
+    padding: 0px;
+    margin-top: -90px
+  }
+
+  .register-container {   
+    width: 85%; /* Adjust width to fit smaller screens */
+    padding: 15px;
+  }
+
+  .main-logo {
+    width: 200px; /* Smaller logo size for mobile */
+    margin-bottom: -10px
+  }
+
+  input {
+    padding: 8px; /* Reduce padding for inputs */
+    font-size: 0.9em;
+  }
+
+  .register-button {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .password-error, .password-requirements-title, .password-requirements {
+    font-size: 0.8em; /* Smaller font size for mobile */
+  }
+
+  .password-requirements li {
+    font-size: 0.8em;
+  }
+}
 
 </style>
