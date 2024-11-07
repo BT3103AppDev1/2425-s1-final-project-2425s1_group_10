@@ -219,4 +219,40 @@ input {
   border-radius: 10px;
 }
 
+@media (max-width: 480px) {
+  .login-page {
+    padding: 0px;
+    margin-top: -50px
+  }
+
+  .main-logo {
+    width:180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .login-container {
+    width: 330px;
+    padding: 15px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .login-description {
+    font-size: 14px;
+  }
+
+  .form-group input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .login-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
 </style>
