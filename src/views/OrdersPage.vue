@@ -1,5 +1,13 @@
 <template>
-    <div class="orders-page">
+  <div
+    v-if="user"
+    style = "text-align:center;"
+    >
+  <NoAccess />
+  </div> 
+    <div v-if="!user" class="orders-page">
+      <NavBar />
+      <Logo />
       <!-- Top bar with search and filter functionality -->
       <div class="top-bar">
         <SearchAndFilter
@@ -27,13 +35,19 @@
   import NewOrderForm from '@/components/NewOrderForm.vue';
   import Order from '@/models/Order';
   import axios from 'axios';
+  import NavBar from '@/components/NavBar.vue';
+  import Logo from '@/components/Logo.vue';
+  import NoAccess from '@/components/NoAccess.vue';
   
   export default {
     name: 'OrdersPage',
     components: {
       SearchAndFilter,
       OrdersTable,
-      NewOrderForm
+      NewOrderForm,
+      NoAccess,
+      NavBar,
+      Logo
     },
     data() {
       return {

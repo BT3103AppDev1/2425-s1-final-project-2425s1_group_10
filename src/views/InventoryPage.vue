@@ -1,7 +1,15 @@
 <template>
-    <div class="inventory-page">
-      <h2>Inventory Tracking</h2>
-      
+    <div
+    v-if="user"
+    style = "text-align:center;"
+    >
+  <NoAccess />
+  </div> 
+      <div v-if="!user" class="inventory-page">       
+          <NavBar />
+          <Logo />
+
+        <h1>Inventory Tracking</h1>
       <!-- Search and Filter Component -->
       <div class="search-filter-container">
         <SearchAndFilter @search="onSearch" @filter="applyFilters" />
@@ -14,15 +22,22 @@
   </template>
   
   <script>
-  import axios from 'axios';
-  import InventoryTable from '@/components/InventoryTable.vue';
-  import SearchAndFilter from '@/components/SearchAndFilter.vue';
+    import axios from 'axios';
+    import InventoryTable from '@/components/InventoryTable.vue';
+    import SearchAndFilter from '@/components/SearchAndFilter.vue';
+    import NavBar from '@/components/NavBar.vue';
+    import Logo from '@/components/Logo.vue';
+    import NoAccess from '@/components/NoAccess.vue';
   
   export default {
     name: 'InventoryPage',
     components: {
       InventoryTable,
-      SearchAndFilter
+      SearchAndFilter,
+      NavBar,
+      Logo,
+      NoAccess,
+
     },
     data() {
       return {
