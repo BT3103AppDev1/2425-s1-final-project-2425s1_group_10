@@ -1,0 +1,43 @@
+[
+    {
+      "name": "Wireless Mouse",
+      "sku": "WM-10001",
+      "stockLevel": 12,
+      "reorderStatus": "Low Stock",
+      "category": "Electronics",
+      "price": 25.00,
+      "salesRank": "2nd",
+      "lastRestocked": "2024-09-12"
+    },
+    {
+      "name": "Laptop Stand",
+      "sku": "LS-30003",
+      "stockLevel": 5,
+      "reorderStatus": "Reorder Soon",
+      "category": "Accessories",
+      "price": 30.00,
+      "salesRank": "3rd",
+      "lastRestocked": "2024-09-15"
+    },
+    {
+      "name": "USB-C Hub",
+      "sku": "UH-40008",
+      "stockLevel": 2,
+      "reorderStatus": "Reorder Needed",
+      "category": "Electronics",
+      "price": 15.00,
+      "salesRank": "10th",
+      "lastRestocked": "2024-09-05"
+    },
+    {
+      "name": "Standing Desk",
+      "sku": "SD-50010",
+      "stockLevel": 20,
+      "reorderStatus": "In Stock",
+      "category": "Furniture",
+      "price": 200.00,
+      "salesRank": "1st",
+      "lastRestocked": "2024-09-08"
+    }
+  ]
+  
