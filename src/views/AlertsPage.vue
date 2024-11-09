@@ -1,6 +1,15 @@
 <template>
-    <div class="alerts-page">
-      <h2>Alerts Page</h2>
+  <div
+    v-if="user"
+    style = "text-align:center;"
+    >
+  <NoAccess />
+  </div> 
+    <div v-if="!user" class="alerts-page">
+        <NavBar />
+        <Logo />
+
+      <h1>Alerts Page</h1>
   
       <!-- Low Stock Alerts Section -->
       <section class="alerts-section">
@@ -35,12 +44,18 @@
   import axios from 'axios';
   import FilterPanel from '@/components/FilterPanel.vue';
   import AlertsTable from '@/components/AlertsTable.vue';
+  import NavBar from '@/components/NavBar.vue';
+  import Logo from '@/components/Logo.vue';
+  import NoAccess from '@/components/NoAccess.vue';
   
   export default {
     name: 'AlertsPage',
     components: {
       FilterPanel,
-      AlertsTable
+      AlertsTable,
+      NavBar,
+      Logo,
+      NoAccess
     },
     data() {
       return {

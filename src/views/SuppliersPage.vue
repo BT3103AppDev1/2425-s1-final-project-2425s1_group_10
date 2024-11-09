@@ -1,5 +1,13 @@
 <template>
-    <div class="suppliers-page">
+  <div
+    v-if="user"
+    style = "text-align:center;"
+    >
+  <NoAccess />
+  </div>
+    <div v-if="!user" class="suppliers-page">
+      <NavBar />
+      <Logo />
       <!-- Top bar with the "New Supplier" button -->
       <div class="top-bar">
         <SearchAndFilter
@@ -27,13 +35,19 @@
   import NewSupplierForm from '@/components/NewSupplierForm.vue';
   import Supplier from '@/models/Supplier';
   import axios from 'axios';
+  import NavBar from '@/components/NavBar.vue';
+  import Logo from '@/components/Logo.vue';
+  import NoAccess from '@/components/NoAccess.vue';
   
   export default {
     name: 'SuppliersPage',
     components: {
       SearchAndFilter,
       SuppliersTable,
-      NewSupplierForm
+      NewSupplierForm,
+      NoAccess,
+      NavBar,
+      Logo
     },
     data() {
       return {
