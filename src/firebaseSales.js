@@ -11,7 +11,7 @@ const firebaseSalesConfig = {
   messagingSenderId: "988255917610",
   appId: "1:988255917610:web:bffbb19f5ce8468e8c9553",
   measurementId: "G-GYYZ1MBSBV"
-};
+}; 
 
 // Initialize a separate Firebase instance for sales data
 const salesApp = initializeApp(firebaseSalesConfig, "salesApp");
