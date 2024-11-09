@@ -54,21 +54,39 @@ export default {
       user: null,
       // FAQ Section Data
       faqs: [
+
         {
-          question: "How do I manage stock levels?",
-          answer: "You can manage stock levels by navigating to the inventory section and updating the product quantities.",
+          question: "How do I Add New Products?",
+          answer: "Navigate to the Inventory Tracking page. Click on the + button in the top bar to add a new product. Fill in the product details in the form and submit to add it to the inventory.",
           open: false,
         },
         {
-          question: "What happens if stock runs out?",
-          answer: "An alert is generated, and you can set reorder notifications to restock in time.",
+          question: "How do I Edit Stock Levels?",
+          answer: "You can manage stock levels by navigating to the Inventory Tracking section and updating the product quantities. Use the search and filter options to locate specific items quickly.",
           open: false,
         },
         {
-          question: "How can I track supplier shipments?",
-          answer: "You can track shipments via the suppliers section under the orders tab.",
+          question: "How do I Set Up Low Stock Alerts?",
+          answer: "Visit the Alerts page to monitor low stock levels. The system automatically filters and displays items with low stock or critical low stock status, so you can manage stock more effectively.",
           open: false,
         },
+        {
+          question: "How do I Export Sales Data?",
+          answer: "On the Sales Overview page, click the Export Sales Data button to download the current sales data as a CSV file. This allows you to view and analyse sales data in applications like Excel or Google Sheets.",
+          open: false,
+        },
+        {
+          question: "Forgot Password?",
+          answer: "If you're having trouble logging in, double-check your credentials. You can also use 'Forgot Password' if needed.",
+          open: false,
+        },
+        {
+          question: "How do I Contact Support?",
+          answer: "For support, please contact us at 555-123-4567 or email support@companyemail.com.",
+          open: false,
+        },
+
+
       ],
       // Chatbot Data
       messages: [{ text: "Hello! How can I assist you today?", user: "bot" }],

@@ -18,6 +18,7 @@
           <!-- Toggle Sales Records and Add New Sale Form Buttons -->
           <div class="actions">
             <button @click="toggleSalesRecords">{{ showSalesRecords ? 'Hide Sales Records' : 'View Sales Records' }}</button>
+            <button @click="exportSalesData" class="export-button">Export Sales Data</button>
             <button @click="toggleAddSaleForm">+</button>
           </div>
   
@@ -287,6 +288,7 @@
     }
   };
   
+  
       // Delete a sale from Firebase
      // SalesPage.vue
   
@@ -413,6 +415,34 @@
       const closeAddSaleForm = () => {
     showAddSaleForm.value = false;
   };
+  const exportSalesData = () => {
+  // Convert sales data to CSV format
+  const csvContent = [
+    ["Product Name", "SKU", "Category", "Units Sold", "Sale Date", "Revenue", "Profit", "Sales Rank"], // Header row
+    ...salesData.map(sale => [
+      sale.product_name,
+      sale.sku,
+      sale.category,
+      sale.units_sold,
+      sale.sale_date,
+      sale.revenue,
+      sale.profit,
+      sale.sales_rank
+    ])
+  ]
+    .map(e => e.join(","))
+    .join("\n");
+
+  // Create a blob and a download link
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute("download", "sales_data.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+  
   
       return {
         user,
@@ -431,6 +461,7 @@
         topProduct,
         bestPerformers,
         worstPerformers,
+        exportSalesData
       };
     },
   };
@@ -736,7 +767,7 @@
   }
   .actions-bottom {
     display: flex;
-    justify-content: center; /* Center-align the button */
+    justify-content: center; 
     margin-top: 20px;
   }
   
@@ -755,5 +786,13 @@
   .actions-bottom button:hover {
     background-color: #356837;
   }
+  .actions button.export-button {
+  background-color: #606c38;
+  color: white;
+}
+
+.actions button.export-button:hover {
+  background-color: #356837; 
+}
   
   </style>
