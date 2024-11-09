@@ -1,0 +1,73 @@
+[
+    {
+      "name": "Laptop Stand Pro",
+      "sku": "LSTP-203",
+      "incomingStock": 200,
+      "expectedArrivalDate": "2024-09-30",
+      "currentStock": 15
+    },
+    {
+      "name": "Wireless Mouse Z",
+      "sku": "WLMZ-612",
+      "incomingStock": 150,
+      "expectedArrivalDate": "2024-10-03",
+      "currentStock": 35
+    },
+    {
+      "name": "Power Bank Y",
+      "sku": "PWRB-308",
+      "incomingStock": 400,
+      "expectedArrivalDate": "2024-10-01",
+      "currentStock": 50
+    },
+    {
+      "name": "Desktop Stand",
+      "sku": "DSTP-721",
+      "incomingStock": 120,
+      "expectedArrivalDate": "2024-10-05",
+      "currentStock": 25
+    },
+    {
+      "name": "Screen Protector Pack",
+      "sku": "SPPK-999",
+      "incomingStock": 300,
+      "expectedArrivalDate": "2024-10-07",
+      "currentStock": 100
+    },
+    {
+      "name": "Keyboard Protector",
+      "sku": "KBPT-214",
+      "incomingStock": 100,
+      "expectedArrivalDate": "2024-10-08",
+      "currentStock": 45
+    },
+    {
+      "name": "Portable Hard Drive",
+      "sku": "PHDV-532",
+      "incomingStock": 50,
+      "expectedArrivalDate": "2024-10-10",
+      "currentStock": 20
+    },
+    {
+      "name": "Mouse Pad Plus",
+      "sku": "MPSD-782",
+      "incomingStock": 80,
+      "expectedArrivalDate": "2024-10-12",
+      "currentStock": 15
+    },
+    {
+      "name": "USB Adapter",
+      "sku": "USAD-390",
+      "incomingStock": 250,
+      "expectedArrivalDate": "2024-10-15",
+      "currentStock": 10
+    },
+    {
+      "name": "Portable Projector",
+      "sku": "PJTR-947",
+      "incomingStock": 30,
+      "expectedArrivalDate": "2024-10-20",
+      "currentStock": 5
+    }
+  ]
+    

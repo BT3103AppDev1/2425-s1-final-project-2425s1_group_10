@@ -1,0 +1,93 @@
+[
+    {
+      "order_id": "ORD-1001",
+      "customer_name": "Alice Tan",
+      "order_date": "2024-09-18",
+      "total_amount": 75.00,
+      "order_status": "Shipped",
+      "products_ordered": "Battery Pack B (3)",
+      "shipping_address": "123 Orchard Road, SGP"
+    },
+    {
+      "order_id": "ORD-1002",
+      "customer_name": "John Smith",
+      "order_date": "2024-09-19",
+      "total_amount": 120.00,
+      "order_status": "Pending",
+      "products_ordered": "Bluetooth Speaker",
+      "shipping_address": "456 Clementi Ave, SGP"
+    },
+    {
+      "order_id": "ORD-1003",
+      "customer_name": "Sara Lee",
+      "order_date": "2024-09-17",
+      "total_amount": 60.00,
+      "order_status": "Delivered",
+      "products_ordered": "Wireless Mouse Z",
+      "shipping_address": "789 Bukit Timah Rd, SGP"
+    },
+    {
+      "order_id": "ORD-1004",
+      "customer_name": "Michael Tan",
+      "order_date": "2024-09-20",
+      "total_amount": 95.50,
+      "order_status": "Shipped",
+      "products_ordered": "USB-C Hub, HDMI Cable",
+      "shipping_address": "12 Jurong West, SGP"
+    },
+    {
+      "order_id": "ORD-1005",
+      "customer_name": "Emily Wong",
+      "order_date": "2024-09-21",
+      "total_amount": 200.00,
+      "order_status": "Pending",
+      "products_ordered": "4K Monitor",
+      "shipping_address": "34 Upper Serangoon, SGP"
+    },
+    {
+      "order_id": "ORD-1006",
+      "customer_name": "David Lim",
+      "order_date": "2024-09-22",
+      "total_amount": 30.00,
+      "order_status": "Cancelled",
+      "products_ordered": "Wireless Charger",
+      "shipping_address": "456 Clementi Road, SGP"
+    },
+    {
+      "order_id": "ORD-1007",
+      "customer_name": "Olivia Tan",
+      "order_date": "2024-09-23",
+      "total_amount": 85.00,
+      "order_status": "Delivered",
+      "products_ordered": "Smartphone Case X, Screen Protector",
+      "shipping_address": "78 East Coast Rd, SGP"
+    },
+    {
+      "order_id": "ORD-1008",
+      "customer_name": "Chris Chia",
+      "order_date": "2024-09-24",
+      "total_amount": 150.00,
+      "order_status": "Shipped",
+      "products_ordered": "Keyboard, Mouse Pad",
+      "shipping_address": "99 Tampines Ave, SGP"
+    },
+    {
+      "order_id": "ORD-1009",
+      "customer_name": "Megan Lee",
+      "order_date": "2024-09-25",
+      "total_amount": 45.00,
+      "order_status": "Pending",
+      "products_ordered": "USB Drive 64GB",
+      "shipping_address": "100 Changi Rd, SGP"
+    },
+    {
+      "order_id": "ORD-1010",
+      "customer_name": "Brandon Ng",
+      "order_date": "2024-09-26",
+      "total_amount": 250.00,
+      "order_status": "Delivered",
+      "products_ordered": "Laptop Stand, Docking Station",
+      "shipping_address": "5 Raffles Place, SGP"
+    }
+  ]
+  
