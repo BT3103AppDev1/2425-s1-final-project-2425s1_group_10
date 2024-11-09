@@ -121,7 +121,7 @@ export default {
       }, 1000);
     },
 
-    getResponseForIntent(intent) {
+    getResponseForIntent(intent) { 
       switch (intent) {
         case "check stock":
           return "You can check stock in the inventory section.";
