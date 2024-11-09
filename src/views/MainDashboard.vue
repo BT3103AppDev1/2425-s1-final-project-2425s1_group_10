@@ -26,117 +26,110 @@
         <LogOut />
         <!-- Dashboard Content -->
         <div class="dashboard-content">
-          <!-- Top Row of Dashboard Cards -->
-          <div class="dashboard-top">
-            <div class="dashboard-card">
-              <div class="card-title">
-                Total Items
-              </div>
-              <div class="card-value">
-                {{ totalItems }}
-              </div>
-              <div 
-                v-for="item in topTotalItems"
-                :key="item.sku"
-              >
-                {{ item.product_name }}: {{ item.stock_quantity }}
-              </div>
-              <router-link 
-                to="/inventory" 
-                class="see-more-btn"
-              >
-                See More
-              </router-link>
+          <div class="dashboard-card">
+            <div class="card-title">
+              Total Items
             </div>
+            <div class="card-value">
+              {{ totalItems }}
+            </div>
+            <div 
+              v-for="item in topTotalItems"
+              :key="item.sku"
+            >
+              {{ item.product_name }}: {{ item.stock_quantity }}
+            </div>
+            <router-link 
+              to="/inventory" 
+              class="see-more-btn"
+            >
+              See More
+            </router-link>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-title">
+              Restock
+            </div>
+            <div class="card-value">
+              {{ restock }}
+            </div>
+            <div 
+              v-for="item in topRestockItems" 
+              :key="item.sku"
+            >
+              {{ item.product_name }}: {{ item.low_stock_threshold - item.stock_quantity }}
+            </div>
+            <router-link 
+              to="/inventory" 
+              class="see-more-btn"
+            >
+              See More
+            </router-link>
+          </div>
             
-            <div class="dashboard-card">
-              <div class="card-title">
-                Restock
-              </div>
-              <div class="card-value">
-                {{ restock }}
-              </div>
-              <div 
-                v-for="item in topRestockItems" 
-                :key="item.sku"
-              >
-                {{ item.product_name }}: {{ item.low_stock_threshold - item.stock_quantity }}
-              </div>
-              <router-link 
-                to="/inventory" 
-                class="see-more-btn"
-              >
-                See More
-              </router-link>
+          <div class="dashboard-card">
+            <div class="card-title">
+              Excess Stock
             </div>
-            
-            <div class="dashboard-card">
-              <div class="card-title">
-                Excess Stock
-              </div>
-              <div class="card-value">
-                {{ excessStock }}
-              </div>
-              <div 
-                v-for="item in topExcessStockItems" 
-                :key="item.sku"
-              >
-                {{ item.product_name }}: {{ item.stock_quantity - item.low_stock_threshold }}
-              </div>
-              <router-link 
-                to="/inventory" 
-                class="see-more-btn"
-              >
-                See More
-              </router-link>
+            <div class="card-value">
+              {{ excessStock }}
             </div>
+            <div 
+              v-for="item in topExcessStockItems" 
+              :key="item.sku"
+            >
+              {{ item.product_name }}: {{ item.stock_quantity - item.low_stock_threshold }}
+            </div>
+            <router-link 
+              to="/inventory" 
+              class="see-more-btn"
+            >
+              See More
+            </router-link>
           </div>
 
-          <!-- Bottom Row of Dashboard Cards -->
-          <div class="dashboard-bottom">
-            <div class="dashboard-card">
-              <div class="card-title">
-                2023 Sales Performance
-              </div>
-              <div style="height: 300px; width: 100%;">
-                <canvas id="salesPerformanceChart" />
-                <router-link 
-                  to="/sales" 
-                  class="see-more-btn"
-                >
-                  See More
-                </router-link>  
-              </div>
+          <div class="dashboard-card">
+            <div class="card-title">
+              2023 Sales Performance
             </div>
-            <div class="dashboard-card">
-              <div class="card-title">
-                Stock Levels by Category
-              </div>
-              <div style="height: 300px; width: 100%;">
-                <canvas id="categoryPieChart" />
-              </div>
+            <div style="height: 300px; width: 100%;">
+              <canvas id="salesPerformanceChart" />
+              <router-link 
+                to="/sales" 
+                class="see-more-btn"
+              >
+                See More
+              </router-link>  
             </div>
-            <div class="dashboard-card">
-              <div class="card-title">
-                Alerts
+          </div>
+          <div class="dashboard-card">
+            <div class="card-title">
+              Stock Levels by Category
+            </div>
+            <div style="height: 300px; width: 100%;">
+              <canvas id="categoryPieChart" />
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-title">
+              Alerts
+            </div>
+            <div class="card-content">
+              <!-- Display top restock alert -->
+              <div v-if="topRestockItem">
+                <strong>Restock Needed:</strong><br>
+                {{ topRestockItem.product_name }}: {{ topRestockItem.low_stock_threshold - topRestockItem.stock_quantity }} items
               </div>
-              <div class="card-content">
-                <!-- Display top restock alert -->
-                <div v-if="topRestockItem">
-                  <strong>Restock Needed:</strong><br>
-                  {{ topRestockItem.product_name }}: {{ topRestockItem.low_stock_threshold - topRestockItem.stock_quantity }} items
-                </div>
-                <br>
-                <!-- Display top excess stock alert -->
-                <div v-if="topExcessStockItem">
-                  <strong>Excess Stock:</strong> <br>
-                  {{ topExcessStockItem.product_name }}: {{ topExcessStockItem.stock_quantity - topExcessStockItem.low_stock_threshold }} items
-                </div>
-                <br>
-                <!-- Check notifications message -->
-                <div class="check-notifications">
-                  <strong>Check Notifications for More Alerts</strong>
-                </div>
+              <br>
+              <!-- Display top excess stock alert -->
+              <div v-if="topExcessStockItem">
+                <strong>Excess Stock:</strong> <br>
+                {{ topExcessStockItem.product_name }}: {{ topExcessStockItem.stock_quantity - topExcessStockItem.low_stock_threshold }} items
+              </div>
+              <br>
+              <!-- Check notifications message -->
+              <div class="check-notifications">
+                <strong>Check Notifications for More Alerts</strong>
               </div>
             </div>
           </div>
@@ -420,11 +413,13 @@ export default {
 
 .dashboard-content {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: start;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   padding-top: 50px;
+  padding-left: 13%;
 }
 
 .dashboard-top,
@@ -472,7 +467,7 @@ export default {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  width: 30%;
+  width: 25%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
@@ -482,6 +477,17 @@ export default {
 
 .restock-card {
   background-color: #A6BE96;
+}
+
+@media (max-width: 480px) {
+  .dashboard-card {
+    width: 75%; /* 1 card per row on smaller screens */
+  }
+
+  .dashboard-content {
+    padding-top: 0px;
+    padding-left: 10%;
+  }
 }
 
 </style>
