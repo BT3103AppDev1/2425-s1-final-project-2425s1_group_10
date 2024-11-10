@@ -146,15 +146,25 @@
   transition: margin-left 0.3s, width 0.3s; /* Smooth transition for content resizing */
 }
   .alerts-page {
+    background-color: #FAEDCD; /* Consistent with project theme */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #FEFAE0;
-    color: #4a4a4a;
-    height: 100vh;
-    overflow: auto;
+    padding-left: 120px; /* Ensure space for sidebar */
+    width: calc(100% - 120px); /* Adjust to prevent overlap */
     box-sizing: border-box;
+    height: 100vh;
+    overflow-y: auto;
   }
-  
+
+  h1 {
+    color: #606C38;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
   .alerts-section {
     margin-bottom: 20px;
     padding: 20px;
@@ -162,24 +172,62 @@
     border-radius: 8px;
     background-color: #FEFAE0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width to align with content */
   }
-  
+
   .section-content {
     display: flex;
     gap: 20px;
     overflow: hidden;
   }
-  
-  h2 {
-    color: #b56d00;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
+
   h3 {
-    color: #c58e4f;
+    color: #C58E4F;
     font-size: 20px;
     margin-bottom: 10px;
   }
-  </style>
-  
+
+  /* Styling for table sections */
+  .alerts-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .alerts-table th {
+    background-color: #D4A373;
+    color: #283618;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  .alerts-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .alerts-table tr:nth-child(even) {
+    background-color: #E6CEAD;
+  }
+
+  .alerts-table tr:hover {
+    background-color: #FFE4B2;
+    transition: background-color 0.3s;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .alerts-page {
+      padding-left: 10px; /* Adjust padding for smaller screens */
+      width: 100%; /* Full width on smaller screens */
+    }
+
+    .section-content {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>
