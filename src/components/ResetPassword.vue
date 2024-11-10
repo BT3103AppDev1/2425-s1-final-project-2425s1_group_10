@@ -114,5 +114,38 @@
   width: 300px; 
   border-radius: 10px;
 }
+
+@media (max-width: 480px) {
+  .reset-password-page {
+    padding: 0px;
+    margin-top: -90px
+  }
+
+  .main-logo {
+    width:180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .reset-password-container {
+    width: 330px;
+    padding: 15px;
+  }
+
+  .reset-password-title {
+    font-size: 20px;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .reset-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
   </style>
   
