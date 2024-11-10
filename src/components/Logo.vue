@@ -15,7 +15,7 @@
   .logo-container {
     position: absolute;
     top: 20px;
-    left: 50px;
+    left: 70px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -24,6 +24,12 @@
   .logo-image {
     width: 222px;
     height: 77px;
+  }
+
+  @media (max-width: 480px) {
+    .logo-container {
+      left: 10px;
+    }
   }
   </style>
   
