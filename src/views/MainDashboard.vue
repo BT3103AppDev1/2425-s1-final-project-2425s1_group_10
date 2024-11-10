@@ -92,7 +92,7 @@
             <div class="card-title">
               2023 Sales Performance
             </div>
-            <div style="height: 300px; width: 100%;">
+            <div style="height: 150px; width: 100%;">
               <canvas id="salesPerformanceChart" />
               <router-link 
                 to="/sales" 
@@ -352,6 +352,8 @@ export default {
 <style scoped>
 .main-dashboard {
   display: flex;
+  width: 100%;
+  overflow-x: hidden; /* 防止水平滚动 */
 }
 
 .left-side {
@@ -418,7 +420,7 @@ export default {
   justify-content: start;
   width: 100%;
   max-width: 1600px;
-  padding-top: 50px;
+  margin-top: -30px;
   padding-left: 13%;
 }
 
@@ -473,6 +475,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .restock-card {
@@ -480,13 +483,30 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .left-side {
+    display: none;
+  }
+
   .dashboard-card {
-    width: 75%; /* 1 card per row on smaller screens */
+    width: 90%;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 
   .dashboard-content {
     padding-top: 0px;
-    padding-left: 10%;
+    margin-right: 100px;
+    margin-left: -36px;
+    margin-top: -40px;
+
+  }
+
+  .dashboard-top-container {
+    margin-bottom: 0px; /* Space between this container and the next row */
+  }
+
+  .see-more-btn {
+    display: none;
   }
 }
 
