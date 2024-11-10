@@ -1,245 +1,284 @@
 <template>
-  <div
-    v-if="user"
-    style = "text-align:center;"
-    >
-  <NoAccess />
-  </div> 
-    <div v-if="!user" class="orders-page">
-      <NavBar />
-      <Logo />
-      <!-- Top bar with search and filter functionality -->
-      <div class="top-bar">
-        <SearchAndFilter
-          @search="filterOrders"
-          @filter="applyFilters"
+  <div v-if="user" style="text-align:center;">
+    <NoAccess />
+  </div>
+  <div v-if="!user" class="orders-page">
+    <NavBar />
+    <Logo />
+    <!-- Top bar with search, filter, and supplier functionality -->
+    <div class="top-bar">
+      <div class="search-filter-container">
+        <input
+          v-model="searchQuery"
+          @input="filterOrders"
+          type="text"
+          placeholder="Search Supplier Name"
+          class="search-input"
         />
-        <button class="new-order-button" @click="showForm = true">+ New Order</button>
+        <select v-model="selectedCategory" @change="filterByCategory" class="filter-select">
+          <option value="">Category</option>
+          <option v-for="category in categories" :key="category" :value="category">
+            {{ category }}
+          </option>
+        </select>
+        <select v-model="selectedStatus" @change="applyFilters" class="filter-select">
+          <option value="">Status</option>
+          <option value="Pending">Pending</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+        <input
+          v-model="selectedDate"
+          @change="filterByDate"
+          type="date"
+          class="filter-select"
+        />
       </div>
-  
-      <!-- Orders Table -->
-      <OrdersTable :orders="filteredOrders" />
-  
-      <!-- New Order Form Modal -->
-      <NewOrderForm
-        v-if="showForm"
-        @close="showForm = false"
-        @add-order="addOrder"
-      />
+      <button class="new-order-button" @click="showForm = true">+ New Order</button>
     </div>
-  </template>
-  
-  <script>
-  import SearchAndFilter from '@/components/SearchAndFilter.vue';
-  import OrdersTable from '@/components/OrdersTable.vue';
-  import NewOrderForm from '@/components/NewOrderForm.vue';
-  import Order from '@/models/Order';
-  import axios from 'axios';
-  import NavBar from '@/components/NavBar.vue';
-  import Logo from '@/components/Logo.vue';
-  import NoAccess from '@/components/NoAccess.vue';
-  
-  export default {
-    name: 'OrdersPage',
-    components: {
-      SearchAndFilter,
-      OrdersTable,
-      NewOrderForm,
-      NoAccess,
-      NavBar,
-      Logo
-    },
-    data() {
-      return {
-        orders: [],
-        filteredOrders: [],
-        showForm: false // Controls the visibility of the form modal
-      };
-    },
-    methods: {
-      async loadOrders() {
-        try {
-          const response = await axios.get('/orders_data.json');
-          this.orders = response.data.map(
-            item => new Order(
-              item.order_id,
-              item.customer_name,
-              item.order_date,
-              item.total_amount,
-              item.order_status,
-              item.products_ordered,
-              item.shipping_address
-            )
-          );
-          this.filteredOrders = this.orders;
-        } catch (error) {
-          console.error("Error loading orders:", error);
-        }
-      },
-      filterOrders(query) {
-        this.filteredOrders = this.orders.filter(order =>
-          order.id.toLowerCase().includes(query.toLowerCase())
+
+    <!-- Orders Table -->
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Order Date</th>
+          <th>Total Amount</th>
+          <th>Order Status</th>
+          <th>Products Ordered</th>
+          <th>Shipping Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="order in filteredOrders" :key="order.id">
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.date }}</td>
+          <td>{{ order.amount }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.productsOrdered }}</td>
+          <td>{{ order.shippingAddress }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- New Order Form Modal -->
+    <NewOrderForm
+      v-if="showForm"
+      @close="showForm = false"
+      @add-order="addOrder"
+    />
+  </div>
+</template>
+
+<script>
+import NewOrderForm from '@/components/NewOrderForm.vue';
+import Order from '@/models/Order';
+import axios from 'axios';
+import NavBar from '@/components/NavBar.vue';
+import Logo from '@/components/Logo.vue';
+import NoAccess from '@/components/NoAccess.vue';
+
+export default {
+  name: 'OrdersPage',
+  components: {
+    NewOrderForm,
+    NoAccess,
+    NavBar,
+    Logo
+  },
+  data() {
+    return {
+      orders: [],
+      filteredOrders: [],
+      categories: ["Electronics", "Home Appliances", "Furniture"], // Example categories
+      showForm: false,
+      searchQuery: '',
+      selectedCategory: '',
+      selectedStatus: '',
+      selectedDate: ''
+    };
+  },
+  methods: {
+    async loadOrders() {
+      try {
+        const response = await axios.get('/orders_data.json');
+        this.orders = response.data.map(
+          item => new Order(
+            item.order_id,
+            item.customer_name,
+            item.order_date,
+            item.total_amount,
+            item.order_status,
+            item.products_ordered,
+            item.shipping_address
+          )
         );
-      },
-      applyFilters(filters) {
-        this.filteredOrders = this.orders.filter(order => {
-          return (
-            (!filters.amount || parseFloat(order.amount) >= parseFloat(filters.amount)) &&
-            (!filters.date || order.date === filters.date) &&
-            (!filters.status || order.status === filters.status)
-          );
-        });
-      },
-      addOrder(newOrder) {
-        // Add the new order to the list and update the filteredOrders
-        this.orders.push(newOrder);
         this.filteredOrders = this.orders;
-        this.showForm = false; // Close the form modal
+      } catch (error) {
+        console.error("Error loading orders:", error);
       }
     },
-    mounted() {
-      this.loadOrders();
+    filterOrders() {
+      this.filteredOrders = this.orders.filter(order =>
+        order.supplierName.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+    filterByCategory() {
+      if (this.selectedCategory) {
+        this.filteredOrders = this.orders.filter(
+          order => order.category === this.selectedCategory
+        );
+      } else {
+        this.filteredOrders = this.orders;
+      }
+    },
+    applyFilters() {
+      this.filteredOrders = this.orders.filter(order => {
+        return (
+          (!this.selectedStatus || order.status === this.selectedStatus) &&
+          (!this.selectedCategory || order.category === this.selectedCategory)
+        );
+      });
+    },
+    filterByDate() {
+      if (this.selectedDate) {
+        this.filteredOrders = this.orders.filter(
+          order => order.date === this.selectedDate
+        );
+      } else {
+        this.filteredOrders = this.orders;
+      }
+    },
+    addOrder(newOrder) {
+      this.orders.push(newOrder);
+      this.filteredOrders = this.orders;
+      this.showForm = false;
     }
-  };
-  </script>
-  
+  },
+  mounted() {
+    this.loadOrders();
+  }
+};
+</script>
+
 <style scoped>
+.orders-page {
+  background-color: #FAEDCD;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 20px;
+  padding-left: 120px;
+  width: calc(100% - 120px);
+  box-sizing: border-box;
+  color: #4a4a4a;
+  font-family: Arial, sans-serif;
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.new-order-button {
+  padding: 10px 15px;
+  background-color: #606C38;
+  color: #FEFAE0;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.new-order-button:hover {
+  background-color: #356837;
+  transform: scale(1.05);
+}
+
+.new-order-button:focus {
+  outline: none;
+  background-color: #50632D;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.orders-table th {
+  background-color: #D4A373;
+  color: #283618;
+  padding: 12px 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.orders-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.orders-table tr:nth-child(even) {
+  background-color: #E6CEAD;
+}
+
+.orders-table tr:hover {
+  background-color: #FFE4B2;
+  transition: background-color 0.3s;
+}
+
+.search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-input, .filter-select {
+  width: 250px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background-color: #FFF7E0;
+  font-size: 14px;
+}
+
+.search-input:focus, .filter-select:focus {
+  outline: none;
+  border-color: #C4984A;
+}
+
+@media (max-width: 768px) {
   .orders-page {
-    background-color: #FAEDCD; /* Background color consistent with project */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the left */
-    margin: 0 auto; /* Center horizontally */
-    padding: 20px;
-    padding-left: 120px; /* Added padding to push content to the right */
-    width: calc(100% - 120px); /* Adjust width to avoid overlapping */
-    box-sizing: border-box;
-    color: #4a4a4a;
-    font-family: Arial, sans-serif;
+    padding-left: 10px;
+    width: 100%;
   }
-
-  /* Top bar styling */
   .top-bar {
-    width: 100%; /* Full width of the page */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: stretch;
   }
-
-  /* "New Order" button styling */
+  .search-filter-container {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
   .new-order-button {
-    padding: 10px 15px;
-    background-color: #606C38; /* Consistent green color */
-    color: #FEFAE0;
-    border: none;
-    border-radius: 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  }
-
-  .new-order-button:hover {
-    background-color: #356837; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly increase size on hover */
-  }
-
-  .new-order-button:focus {
-    outline: none;
-    background-color: #50632D; /* Focus color */
-  }
-
-  /* Table styling */
-  .orders-table {
-    width: 100%; /* Full width for better fitting */
-    border-collapse: collapse;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    align-self: flex-end;
     margin-top: 10px;
   }
-
-  .orders-table th {
-    background-color: #D4A373; /* Accent color for headers */
-    color: #283618;
-    padding: 12px 15px;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
-
-  .orders-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #ccc;
-  }
-
-  /* Alternate row coloring for readability */
-  .orders-table tr:nth-child(even) {
-    background-color: #E6CEAD; /* Light background for even rows */
-  }
-
-  .orders-table tr:hover {
-    background-color: #FFE4B2; /* Highlight color on hover */
-    transition: background-color 0.3s;
-  }
-
-  /* Styling for the search and filter bar */
-  .search-filter-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* Full width to align with page */
-    margin-bottom: 20px;
-  }
-
-  .search-input {
-    width: 250px;
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    background-color: #FFF7E0; /* Match background */
-    font-size: 14px;
-  }
-
-  .search-input:focus {
-    outline: none;
-    border-color: #C4984A; /* Accent on focus */
-  }
-
-  .filter-select {
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    background-color: #FFF7E0;
-    font-size: 14px;
-  }
-
-  .filter-select:focus {
-    outline: none;
-    border-color: #C4984A; /* Accent on focus */
-  }
-
-  /* Responsive design adjustments */
-  @media (max-width: 768px) {
-    .orders-page {
-      padding-left: 10px; /* Adjust padding for small screens */
-      width: 100%; /* Ensure content takes full width */
-    }
-
-    .top-bar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .search-filter-container {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%; /* Full width on smaller screens */
-    }
-
-    .new-order-button {
-      align-self: flex-end;
-      margin-top: 10px; /* Adjusted space for better positioning */
-    }
-  }
+}
 </style>

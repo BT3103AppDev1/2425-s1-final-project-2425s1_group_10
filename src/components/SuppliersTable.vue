@@ -48,38 +48,43 @@
   </script>
   
   <style scoped>
-  .suppliers-table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .suppliers-table th {
-    background-color: #d6a05c;
-    color: #ffffff;
-    padding: 12px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: left;
-  }
-  
-  .suppliers-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    color: #4a4a4a;
-  }
-  
-  .suppliers-table tr:nth-child(even) {
-    background-color: #fafafa;
-  }
-  
-  .suppliers-table tr:hover {
-    background-color: #f1f1f1;
-  }
+    .suppliers-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .suppliers-table th {
+      background-color: #dda15e; /* Header color */
+      color: #4a4a4a; /* Dark color for text */
+      padding: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .suppliers-table td {
+      padding: 12px;
+      font-size: 14px;
+      color: #4a4a4a;
+      text-align: center; /* Center-align text */
+    }
+
+    /* Alternate row coloring */
+    .suppliers-table tr:nth-child(odd) {
+      background-color: #fefae0; /* Light cream color */
+    }
+
+    .suppliers-table tr:nth-child(even) {
+      background-color: #e6cead; /* Slightly darker beige */
+    }
+
+    .suppliers-table tr:hover {
+      background-color: #ffe4b2; /* Highlight color on hover */
+    }
+
+
   </style>
   
