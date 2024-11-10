@@ -241,7 +241,7 @@ input {
 @media (max-width: 480px) {
   .register-page {
     padding: 0px;
-    margin-top: -90px
+    margin-top: -50px
   }
 
   .register-container {   
@@ -250,7 +250,7 @@ input {
   }
 
   .main-logo {
-    width: 200px; /* Smaller logo size for mobile */
+    width: 180px; /* Smaller logo size for mobile */
     margin-bottom: -10px
   }
 
