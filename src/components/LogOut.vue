@@ -51,4 +51,11 @@
     cursor: pointer;
     font-size: 16px;
   }
+
+  @media (max-width: 480px) {
+  #btn {
+    top: 38px;
+    right: 26px;
+  }
+}
       </style>
