@@ -1,16 +1,22 @@
 <template>
   <div
-    v-if="user"
-    style = "text-align:center;"
+        v-if="!user"
+        style="text-align:center;"
     >
-  <NoAccess />
-  </div> 
-    <div v-if="!user" class="alerts-page">
-        <NavBar />
-        <Logo />
+        <NoAccess />
+    </div>
+    <div class="alerts-page">
+      <h2>Alerts Page</h2>
+      <div class="left-side">
+        <NavBar
+            :collapsed="collapsed" 
+            @update:collapsed="onToggleCollapse"
+        />
+      </div>
 
-      <h1>Alerts Page</h1>
-  
+      <div class="right-side">
+        <Logo />
+        <LogOut />
       <!-- Low Stock Alerts Section -->
       <section class="alerts-section">
         <h3>Low Stock Alerts</h3>
@@ -37,6 +43,7 @@
           <AlertsTable :items="filteredIncomingStock" :isIncomingStock="true" />
         </div>
       </section>
+      </div>
     </div>
   </template>
   
@@ -45,17 +52,20 @@
   import FilterPanel from '@/components/FilterPanel.vue';
   import AlertsTable from '@/components/AlertsTable.vue';
   import NavBar from '@/components/NavBar.vue';
-  import Logo from '@/components/Logo.vue';
+  import LogOut from "@/components/LogOut.vue";
+  import { getAuth, onAuthStateChanged } from "firebase/auth";
   import NoAccess from '@/components/NoAccess.vue';
+  import Logo from '@/components/Logo.vue';
   
   export default {
     name: 'AlertsPage',
     components: {
       FilterPanel,
       AlertsTable,
+      NoAccess,
       NavBar,
+      LogOut,
       Logo,
-      NoAccess
     },
     data() {
       return {
@@ -106,12 +116,35 @@
       }
     },
     mounted() {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          this.user = user;
+        }
+      });
       this.loadData();
     }
   };
   </script>
   
   <style scoped>
+  .left-side {
+  width: 50px; /* Initially narrow for collapsed NavBar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #f4f4f4;
+  transition: width 0.3s; /* Smooth transition for resizing */
+  z-index: 5;
+}
+
+.right-side {
+  margin-left: 50px; /* Initially push content to the right */
+  width: calc(100% - 50px);
+  padding: 20px;
+  transition: margin-left 0.3s, width 0.3s; /* Smooth transition for content resizing */
+}
   .alerts-page {
     padding: 20px;
     font-family: Arial, sans-serif;
