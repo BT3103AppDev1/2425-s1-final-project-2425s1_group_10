@@ -97,7 +97,7 @@ export default {
         const user = userCredential.user;
 
 
-        if (!user.emailVerified && user.email !== "group10@gmail.com") {
+        if (!user.emailVerified && user.email !== "testuser@test.com") {
           alert("Please verify your email before logging in.");
           await auth.signOut(); 
           return;
