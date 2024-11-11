@@ -6,6 +6,8 @@
     <NavBar />
     <Logo />
 
+    <h2 class="page-heading">Inventory Page</h2>
+
     <!-- Top bar with Search and Add Item Button -->
     <div class="top-bar">
       <div class="search-and-filter">
@@ -29,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in filteredInventory" :key="item.id">
+        <tr v-for="item in filteredInventory" :key="item.sku">
           <td>{{ item.name }}</td>
           <td>{{ item.sku }}</td>
           <td>{{ item.stockLevel }}</td>
@@ -41,11 +43,15 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- New Inventory Item Form Modal -->
+    <NewInventoryForm v-if="showForm" @close="showForm = false" @add-inventory="addNewInventoryItem" />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import NewInventoryForm from '@/components/NewInventoryForm.vue';
 import SearchAndFilter from '@/components/SearchAndFilter.vue';
 import NavBar from '@/components/NavBar.vue';
 import Logo from '@/components/Logo.vue';
@@ -54,6 +60,7 @@ import NoAccess from '@/components/NoAccess.vue';
 export default {
   name: 'InventoryPage',
   components: {
+    NewInventoryForm,
     SearchAndFilter,
     NavBar,
     Logo,
@@ -69,18 +76,25 @@ export default {
         stockLevel: '',
         date: ''
       },
-      showForm: false // Control the display of add item form
+      showForm: false
     };
   },
   methods: {
     async loadInventoryData() {
       try {
-        const response = await axios.get('/inventory_page_data.json');
+        // Replace with the correct path to the JSON file in the public folder or API endpoint
+        const response = await axios.get('/inventory_page_data.json');  // Assuming the file is in public folder
+        console.log(response.data);  // Log the data to verify it's correct
         this.inventoryItems = response.data;
         this.filteredInventory = this.inventoryItems;
       } catch (error) {
         console.error('Failed to load inventory data:', error);
       }
+    },
+    addNewInventoryItem(newItem) {
+      this.inventoryItems.push(newItem);
+      this.filteredInventory.push(newItem); // Add to the filtered list as well
+      this.showForm = false; // Close the form after adding the item
     },
     onSearch(query) {
       this.searchQuery = query;
@@ -88,7 +102,6 @@ export default {
     },
     applyFilters(filters = this.filters) {
       this.filters = filters;
-
       this.filteredInventory = this.inventoryItems.filter(item => {
         const matchesSearch = item.name.toLowerCase().includes(this.searchQuery.toLowerCase());
         const matchesCategory = !this.filters.category || item.category === this.filters.category;
@@ -103,7 +116,7 @@ export default {
     }
   },
   mounted() {
-    this.loadInventoryData();
+    this.loadInventoryData();  // Load inventory data when the component is mounted
   }
 };
 </script>
@@ -121,10 +134,12 @@ export default {
   box-sizing: border-box;
 }
 
-h1 {
+.page-heading {
   color: #606C38;
-  font-size: 28px;
+  font-size: 24px;
+  font-weight: bold;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .top-bar {
@@ -172,6 +187,7 @@ h1 {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+  cursor: pointer;
 }
 
 .inventory-table td {

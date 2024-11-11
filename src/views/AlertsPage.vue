@@ -137,8 +137,15 @@ export default {
         const inventoryResponse = await axios.get('/inventory_data.json');
         const incomingStockResponse = await axios.get('/incoming_stock_data.json');
 
-        this.lowStockItems = inventoryResponse.data.filter(item => item.status === 'Low Stock' || item.status === 'Critical Low');
-        this.surplusStockItems = inventoryResponse.data.filter(item => item.status === 'Surplus' || item.status === 'Excess Stock');
+        const inventoryData = inventoryResponse.data.map(item => {
+          const status = item.currentStock <= item.stockLevel
+            ? (item.currentStock < item.stockLevel / 2 ? 'Critical Low' : 'Low Stock')
+            : (item.currentStock > item.stockLevel * 1.5 ? 'Excess Stock' : 'Surplus');
+          return { ...item, status };
+        });
+
+        this.lowStockItems = inventoryData.filter(item => item.status === 'Low Stock' || item.status === 'Critical Low');
+        this.surplusStockItems = inventoryData.filter(item => item.status === 'Surplus' || item.status === 'Excess Stock');
         this.incomingStockItems = incomingStockResponse.data;
 
         this.filteredLowStock = this.lowStockItems;
@@ -186,14 +193,13 @@ export default {
   background-color: #FAEDCD; /* Consistent with project theme */
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align content */
+  align-items: flex-start;
   margin: 0 auto;
   padding: 20px;
   padding-left: 120px; /* Adjust for NavBar space */
   width: calc(100% - 120px);
   box-sizing: border-box;
   height: 100vh;
-  overflow-y: auto;
 }
 
 h2 {

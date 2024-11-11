@@ -5,6 +5,9 @@
   <div v-else class="orders-page">
     <NavBar />
     <Logo />
+    
+    <!-- Heading for Orders Page -->
+    <h2 class="orders-heading" style="color: #606C38; margin-top: 20px;">Orders Page</h2>
 
     <!-- Top bar with the "New Order" button -->
     <div class="top-bar">
