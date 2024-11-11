@@ -1,58 +1,63 @@
 <template>
-    <div class="modal-overlay">
-      <div class="modal">
-        <h3>Add New Supplier</h3>
-        <form @submit.prevent="handleSubmit">
-          <input type="text" v-model="supplier_name" placeholder="Supplier Name" required />
-          <input type="text" v-model="supplier_id" placeholder="Supplier ID" required />
-          <input type="text" v-model="contact_person" placeholder="Contact Person" required />
-          <input type="tel" v-model="phone_number" placeholder="Phone Number" required />
-          <input type="email" v-model="email" placeholder="Email Address" required />
-          <input type="text" v-model="products_supplied" placeholder="Products Supplied" required />
-          <input type="text" v-model="lead_time" placeholder="Lead Time" required />
-          <input type="text" v-model="status" placeholder="Status (Active / On Hold)" required />
-          <input type="date" v-model="last_order_date" placeholder="Last Order Date" required />
-          <button type="submit" class="submit-button">Submit</button>
-        </form>
-        <button @click="$emit('close')" class="close-button">Close</button>
-      </div>
+  <div class="modal-overlay">
+    <div class="modal">
+      <h3>Add New Supplier</h3>
+      <form @submit.prevent="handleSubmit">
+        <input type="text" v-model="supplier_name" placeholder="Supplier Name" required />
+        <input type="text" v-model="supplier_id" placeholder="Supplier ID" required />
+        <input type="text" v-model="contact_person" placeholder="Contact Person" required />
+        <input type="tel" v-model="phone_number" placeholder="Phone Number" required />
+        <input type="email" v-model="email" placeholder="Email Address" required />
+        <input type="text" v-model="products_supplied" placeholder="Products Supplied" required />
+        <input type="text" v-model="lead_time" placeholder="Lead Time" required />
+        <input type="text" v-model="status" placeholder="Status (Active / On Hold)" required />
+        <input type="date" v-model="last_order_date" placeholder="Last Order Date" required />
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+      <button @click="$emit('close')" class="close-button">Close</button>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'NewSupplierForm',
-    data() {
-      return {
-        supplier_id: '',
-        supplier_name: '',
-        contact_person: '',
-        phone_number: '',
-        email: '',
-        products_supplied: '',
-        lead_time: '',
-        status: '',
-        last_order_date: ''
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'NewSupplierForm',
+  data() {
+    return {
+      supplier_id: '',
+      supplier_name: '',
+      contact_person: '',
+      phone_number: '',
+      email: '',
+      products_supplied: '',
+      lead_time: '',
+      status: '',
+      last_order_date: ''
+    };
+  },
+  methods: {
+    handleSubmit() {
+      const newSupplier = {
+        supplier_id: this.supplier_id,
+        supplier_name: this.supplier_name,
+        contact_person: this.contact_person,
+        phone_number: this.phone_number,
+        email: this.email,
+        products_supplied: this.products_supplied,
+        lead_time: this.lead_time,
+        status: this.status,
+        last_order_date: this.last_order_date
       };
-    },
-    methods: {
-      handleSubmit() {
-        const newSupplier = {
-          supplier_id: this.supplier_id,
-          supplier_name: this.supplier_name,
-          contact_person: this.contact_person,
-          phone_number: this.phone_number,
-          email: this.email,
-          products_supplied: this.products_supplied,
-          lead_time: this.lead_time,
-          status: this.status,
-          last_order_date: this.last_order_date
-        };
-        this.$emit('add-supplier', newSupplier); // Emit event with the new supplier data
-      }
+      this.$emit('add-supplier', newSupplier); // Emit event with the new supplier data
     }
-  };
-  </script>
+  }
+};
+</script>
+
+<style scoped>
+/* Your modal styles */
+</style>
+
   
   <style scoped>
   .modal-overlay {
