@@ -714,7 +714,7 @@ background-color: #faedcd;
 
 .performance-tables {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   gap: 20px;
   margin-top: 30px;
 }
