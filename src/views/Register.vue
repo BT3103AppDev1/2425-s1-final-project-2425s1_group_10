@@ -41,7 +41,7 @@
           placeholder="Password"
           required
         >
-        <p class="password-requirements-title">
+        <!-- <p class="password-requirements-title">
           Your password must have:
         </p>
         <ul class="password-requirements">
@@ -51,7 +51,7 @@
           <li :class="{ valid: hasLettersNumbersSpecial }">
             Uppercase, numbers, and special characters
           </li>
-        </ul>
+        </ul> -->
 
         <input
           id="checkPassword"
@@ -101,16 +101,16 @@ export default {
       passwordError: false,
     };
   },
-  computed: {
-    isLengthValid() {
-      return this.password.length >= 8 && this.password.length <= 20;
-    },
-    hasLettersNumbersSpecial() {
-      return /[A-Za-z]/.test(this.password) &&
-             /[0-9]/.test(this.password) &&
-             /[!@#$%^&*(),.?":{}|<>]/.test(this.password);
-    }
-  },
+  // computed: {
+  //   isLengthValid() {
+  //     return this.password.length >= 8 && this.password.length <= 20;
+  //   },
+  //   hasLettersNumbersSpecial() {
+  //     return /[A-Za-z]/.test(this.password) &&
+  //            /[0-9]/.test(this.password) &&
+  //            /[!@#$%^&*(),.?":{}|<>]/.test(this.password);
+  // //   }
+  // },
   methods: {
     async register() {
       console.log(this.password)
@@ -245,17 +245,17 @@ input {
   }
 
   .register-container {   
-    width: 85%; /* Adjust width to fit smaller screens */
+    width: 85%; 
     padding: 15px;
   }
 
   .main-logo {
-    width: 180px; /* Smaller logo size for mobile */
+    width: 180px;
     margin-bottom: -10px
   }
 
   input {
-    padding: 8px; /* Reduce padding for inputs */
+    padding: 8px; 
     font-size: 0.9em;
   }
 
@@ -265,7 +265,7 @@ input {
   }
 
   .password-error, .password-requirements-title, .password-requirements {
-    font-size: 0.8em; /* Smaller font size for mobile */
+    font-size: 0.8em; 
   }
 
   .password-requirements li {
