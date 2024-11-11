@@ -18,18 +18,12 @@
     </div>
 
     <div class="right-side">
-      <!-- Top Bar with Logo and LogOut -->
-      
-      <!-- Dashboard Container -->
       <div class="dashboard-container">
         <Logo />
         <LogOut />
-        <!-- Dashboard Content -->
         <div class="dashboard-content">
           <div class="dashboard-card">
-            <div class="card-title">
-              Total Items
-            </div>
+            <h2 class="dashboard-title">Total Items</h2>
             <div class="card-value">
               {{ totalItems }}
             </div>
@@ -46,10 +40,9 @@
               See More
             </router-link>
           </div>
+          
           <div class="dashboard-card">
-            <div class="card-title">
-              Restock
-            </div>
+            <h2 class="dashboard-title">Restock</h2>
             <div class="card-value">
               {{ restock }}
             </div>
@@ -68,9 +61,7 @@
           </div>
             
           <div class="dashboard-card">
-            <div class="card-title">
-              Excess Stock
-            </div>
+            <h2 class="dashboard-title">Excess Stock</h2>
             <div class="card-value">
               {{ excessStock }}
             </div>
@@ -89,9 +80,7 @@
           </div>
 
           <div class="dashboard-card">
-            <div class="card-title">
-              2023 Sales Performance
-            </div>
+            <h2 class="dashboard-title">2023 Sales Performance</h2>
             <div style="height: 150px; width: 100%;">
               <canvas id="salesPerformanceChart" />
               <router-link 
@@ -102,32 +91,27 @@
               </router-link>  
             </div>
           </div>
+
           <div class="dashboard-card">
-            <div class="card-title">
-              Stock Levels by Category
-            </div>
+            <h2 class="dashboard-title">Stock Levels by Category</h2>
             <div class="chart-container">
               <canvas id="categoryPieChart" />
             </div>
           </div>
+
           <div class="dashboard-card">
-            <div class="card-title">
-              Alerts
-            </div>
+            <h2 class="dashboard-title">Alerts</h2>
             <div class="card-content">
-              <!-- Display top restock alert -->
               <div v-if="topRestockItem">
                 <strong>Restock Needed:</strong><br>
                 {{ topRestockItem.product_name }}: {{ topRestockItem.low_stock_threshold - topRestockItem.stock_quantity }} items
               </div>
               <br>
-              <!-- Display top excess stock alert -->
               <div v-if="topExcessStockItem">
                 <strong>Excess Stock:</strong> <br>
                 {{ topExcessStockItem.product_name }}: {{ topExcessStockItem.stock_quantity - topExcessStockItem.low_stock_threshold }} items
               </div>
               <br>
-              <!-- Check notifications message -->
               <div class="check-notifications">
                 <strong>Check Notifications for More Alerts</strong>
               </div>
@@ -361,7 +345,7 @@ export default {
 .main-dashboard {
   display: flex;
   width: 100%;
-  overflow-x: hidden; /* 防止水平滚动 */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .left-side {
@@ -412,7 +396,6 @@ export default {
   margin-bottom: 20px; /* Space between this container and the next row */
 }
 
-
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -437,14 +420,18 @@ export default {
   width: 100%;
   height: 0;
   padding-bottom: 100%; /* Creates a square aspect ratio */
+  overflow: hidden;
 }
 
 .chart-container canvas {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100% !important;
-  height: 100% !important;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80% !important;
+  height: 80% !important;
 }
 
 .dashboard-top,
@@ -455,9 +442,7 @@ export default {
 }
 
 .card-title {
-  font-weight: bold;
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  display: none; /* Remove old card titles */
 }
 
 .card-value {
@@ -486,6 +471,19 @@ export default {
   background-color: #4a552b; /* Slightly darker green on hover */
 }
 
+.dashboard-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  padding: 0;
+  color: #333;
+  text-align: center;
+  width: 100%;
+}
+
+.card-title {
+  display: none; /* Remove old card titles */
+}
 
 .dashboard-card {
   background-color: #ffffff;
@@ -498,7 +496,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to ensure consistent header placement */
   min-height: 300px;
   max-height: 400px;
   overflow: hidden;
@@ -508,32 +506,35 @@ export default {
   background-color: #A6BE96;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .left-side {
     display: none;
   }
 
+  .right-side {
+    margin-left: 0;
+    width: 100%;
+  }
+
   .dashboard-card {
-    width: 90%;
+    width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
   }
 
   .dashboard-content {
-    padding-top: 0px;
-    margin-right: 100px;
-    margin-left: -36px;
+    padding-top: 0;
+    margin-right: 0;
+    margin-left: 0;
     margin-top: -40px;
-
   }
 
   .dashboard-top-container {
-    margin-bottom: 0px; /* Space between this container and the next row */
+    margin-bottom: 0; /* Space between this container and the next row */
   }
 
   .see-more-btn {
     display: none;
   }
 }
-
 </style>
