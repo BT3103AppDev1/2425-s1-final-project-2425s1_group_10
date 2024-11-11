@@ -6,6 +6,9 @@
     <NavBar />
     <Logo />
 
+    <!-- Page Title -->
+    <h2 style="text-align:center; color: #606C38; margin-top: 20px;">Suppliers Page</h2>
+
     <!-- Top bar with the "New Supplier" button -->
     <div class="top-bar">
       <div class="search-and-filter">
@@ -18,8 +21,8 @@
     <table class="suppliers-table">
       <thead>
         <tr>
-          <th @click="sortBy('name')">Supplier Name</th>
-          <th @click="sortBy('id')">Supplier ID</th>
+          <th>Supplier Name</th>
+          <th>Supplier ID</th>
           <th>Contact Person</th>
           <th>Phone Number</th>
           <th>Email Address</th>
@@ -30,30 +33,30 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="supplier in filteredSuppliers" :key="supplier.id">
-          <td>{{ supplier.name }}</td>
-          <td>{{ supplier.id }}</td>
-          <td>{{ supplier.contactPerson }}</td>
-          <td>{{ supplier.phoneNumber }}</td>
+        <tr v-for="supplier in filteredSuppliers" :key="supplier.supplierid">
+          <td>{{ supplier.suppliername }}</td>
+          <td>{{ supplier.supplierid }}</td>
+          <td>{{ supplier.contactperson }}</td>
+          <td>{{ supplier.phonenumber }}</td>
           <td>{{ supplier.email }}</td>
-          <td>{{ supplier.product }}</td>
-          <td>{{ supplier.leadTime }}</td>
+          <td>{{ supplier.productssupplied }}</td>
+          <td>{{ supplier.leadtime }}</td>
           <td>{{ supplier.status }}</td>
-          <td>{{ supplier.lastOrderDate }}</td>
+          <td>{{ supplier.lastorderdate }}</td>
         </tr>
       </tbody>
     </table>
 
     <!-- New Supplier Form Modal -->
-    <NewSupplierForm v-if="showForm" @close="showForm = false" @add-supplier="addSupplier" />
+    <NewSupplierForm v-if="showForm" @close="showForm = false" @add-supplier="addNewSupplier" />
   </div>
 </template>
 
 <script>
+import { loadSuppliers, addSupplier } from '@/firebaseSuppliers';  // Import Firebase methods
 import SearchAndFilter from '@/components/SearchAndFilter.vue';
 import NewSupplierForm from '@/components/NewSupplierForm.vue';
 import Supplier from '@/models/Supplier';
-import axios from 'axios';
 import NavBar from '@/components/NavBar.vue';
 import Logo from '@/components/Logo.vue';
 import NoAccess from '@/components/NoAccess.vue';
@@ -75,53 +78,55 @@ export default {
     };
   },
   methods: {
-    async loadSuppliers() {
+    async loadSuppliersData() {
       try {
-        const response = await axios.get('/suppliers_data.json');
-        this.suppliers = response.data.map(
-          item => new Supplier(
-            item.supplier_id,
-            item.supplier_name,
-            item.contact_person,
-            item.phone_number,
-            item.email,
-            item.products_supplied,
-            item.lead_time,
-            item.status,
-            item.last_order_date
-          )
-        );
-        this.filteredSuppliers = this.suppliers;
+        const suppliersData = await loadSuppliers(); // Fetch data from Firebase
+        this.suppliers = suppliersData.map(item => new Supplier(
+          item.suppliername,
+          item.supplierid,
+          item.contactperson,
+          item.phonenumber,
+          item.email,
+          item.productssupplied,
+          item.leadtime,
+          item.status,
+          item.lastorderdate
+        ));
+        this.filteredSuppliers = this.suppliers;  // Set the filtered list to the full list of suppliers
       } catch (error) {
         console.error("Error loading suppliers:", error);
       }
     },
     filterSuppliers(query) {
       this.filteredSuppliers = this.suppliers.filter(supplier =>
-        supplier.name.toLowerCase().includes(query.toLowerCase())
+        supplier.suppliername.toLowerCase().includes(query.toLowerCase())
       );
     },
     applyFilters(filters) {
       this.filteredSuppliers = this.suppliers.filter(supplier => {
-        const matchesSearch = !filters.searchQuery || supplier.name.toLowerCase().includes(filters.searchQuery.toLowerCase());
-        const matchesCategory = !filters.category || supplier.product.includes(filters.category);
+        const matchesSearch = !filters.searchQuery || supplier.suppliername.toLowerCase().includes(filters.searchQuery.toLowerCase());
+        const matchesCategory = !filters.category || supplier.productssupplied.includes(filters.category);
         const matchesStatus = !filters.status || supplier.status === filters.status;
-        const matchesDate = !filters.date || supplier.lastOrderDate === filters.date;
+        const matchesDate = !filters.date || supplier.lastorderdate === filters.date;
 
         return matchesSearch && matchesCategory && matchesStatus && matchesDate;
       });
     },
-    addSupplier(newSupplier) {
-      this.suppliers.push(newSupplier);
-      this.filteredSuppliers = this.suppliers;
-      this.showForm = false;
+    async addNewSupplier(newSupplier) {
+      try {
+        await addSupplier(newSupplier);  // Add supplier to Firebase
+        this.loadSuppliersData();  // Reload the suppliers list
+        this.showForm = false;  // Close the form modal
+      } catch (error) {
+        console.error("Error adding new supplier:", error);
+      }
     },
     sortBy(key) {
       this.filteredSuppliers.sort((a, b) => (a[key] > b[key] ? 1 : -1));
     }
   },
   mounted() {
-    this.loadSuppliers();
+    this.loadSuppliersData();  // Load suppliers when the component is mounted
   }
 };
 </script>
@@ -203,22 +208,5 @@ export default {
 
   .suppliers-table tr:hover {
     background-color: #ffe4b2;
-  }
-
-  @media (max-width: 768px) {
-    .suppliers-page {
-      padding-left: 10px;
-      width: 100%;
-    }
-
-    .top-bar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .new-supplier-button {
-      margin-top: 10px;
-      align-self: flex-end;
-    }
   }
 </style>

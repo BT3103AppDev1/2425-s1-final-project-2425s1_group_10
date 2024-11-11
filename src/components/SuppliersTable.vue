@@ -15,15 +15,15 @@
       </thead>
       <tbody>
         <tr v-for="supplier in suppliers" :key="supplier.id">
-          <td>{{ supplier.name }}</td>
-          <td>{{ supplier.id }}</td>
-          <td>{{ supplier.contactPerson }}</td>
-          <td>{{ supplier.phoneNumber }}</td>
+          <td>{{ supplier.suppliername }}</td>
+          <td>{{ supplier.supplierid }}</td>
+          <td>{{ supplier.contactperson }}</td>
+          <td>{{ supplier.phonenumber }}</td>
           <td>{{ supplier.email }}</td>
           <td>{{ supplier.product }}</td>
-          <td>{{ supplier.leadTime }}</td>
+          <td>{{ supplier.leadtime }}</td>
           <td>{{ supplier.status }}</td>
-          <td>{{ supplier.lastOrderDate }}</td>
+          <td>{{ supplier.lastorderdate }}</td>
         </tr>
       </tbody>
     </table>

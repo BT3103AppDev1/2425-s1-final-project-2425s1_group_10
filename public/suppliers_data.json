@@ -1,113 +1,112 @@
-[
-    {
-      "supplier_id": "SUP-001",
-      "supplier_name": "Global Electronics Ltd",
-      "contact_person": "Jane Lim",
-      "phone_number": "+65 9876 1234",
+{
+    "SUP-001": {
+      "supplierid": "SUP-001",
+      "suppliername": "Global Electronics Ltd",
+      "contactperson": "Jane Lim",
+      "phonenumber": "+65 9876 1234",
       "email": "jane.lim@globalelect.com",
-      "products_supplied": "Bluetooth Speaker",
-      "lead_time": "7 days",
+      "productssupplied": "Bluetooth Speaker",
+      "leadtime": "7 days",
       "status": "Active",
-      "last_order_date": "2024-10-10"
+      "lastorderdate": "2024-10-10"
     },
-    {
-      "supplier_id": "SUP-002",
-      "supplier_name": "Tech Parts Co.",
-      "contact_person": "Ahmad Farhan",
-      "phone_number": "+65 9123 4567",
+    "SUP-002": {
+      "supplierid": "SUP-002",
+      "suppliername": "Tech Parts Co.",
+      "contactperson": "Ahmad Farhan",
+      "phonenumber": "+65 9123 4567",
       "email": "ahmad.farhan@techparts.com",
-      "products_supplied": "Phone Case Z",
-      "lead_time": "10 days",
+      "productssupplied": "Phone Case Z",
+      "leadtime": "10 days",
       "status": "Active",
-      "last_order_date": "2024-09-18"
+      "lastorderdate": "2024-09-18"
     },
-    {
-      "supplier_id": "SUP-003",
-      "supplier_name": "Pro Office Suppliers",
-      "contact_person": "Sharon Lee",
-      "phone_number": "+65 9765 4321",
+    "SUP-003": {
+      "supplierid": "SUP-003",
+      "suppliername": "Pro Office Suppliers",
+      "contactperson": "Sharon Lee",
+      "phonenumber": "+65 9765 4321",
       "email": "sharon.lee@prooffice.com",
-      "products_supplied": "Laptop Stand",
-      "lead_time": "5 days",
+      "productssupplied": "Laptop Stand",
+      "leadtime": "5 days",
       "status": "Active",
-      "last_order_date": "2024-08-25"
+      "lastorderdate": "2024-08-25"
     },
-    {
-      "supplier_id": "SUP-004",
-      "supplier_name": "Battery World Pte Ltd",
-      "contact_person": "Kelvin Chong",
-      "phone_number": "+65 9876 7890",
+    "SUP-004": {
+      "supplierid": "SUP-004",
+      "suppliername": "Battery World Pte Ltd",
+      "contactperson": "Kelvin Chong",
+      "phonenumber": "+65 9876 7890",
       "email": "kelvin.chong@batteryw.com",
-      "products_supplied": "Battery Pack B",
-      "lead_time": "14 days",
+      "productssupplied": "Battery Pack B",
+      "leadtime": "14 days",
       "status": "On Hold",
-      "last_order_date": "2024-08-28"
+      "lastorderdate": "2024-08-28"
     },
-    {
-      "supplier_id": "SUP-005",
-      "supplier_name": "Gadget Hub",
-      "contact_person": "Linda Tan",
-      "phone_number": "+65 8888 1234",
+    "SUP-005": {
+      "supplierid": "SUP-005",
+      "suppliername": "Gadget Hub",
+      "contactperson": "Linda Tan",
+      "phonenumber": "+65 8888 1234",
       "email": "linda.tan@gadgethub.com",
-      "products_supplied": "Smartwatch A",
-      "lead_time": "6 days",
+      "productssupplied": "Smartwatch A",
+      "leadtime": "6 days",
       "status": "Active",
-      "last_order_date": "2024-10-02"
+      "lastorderdate": "2024-10-02"
     },
-    {
-      "supplier_id": "SUP-006",
-      "supplier_name": "Home Essentials Inc.",
-      "contact_person": "David Wong",
-      "phone_number": "+65 9988 7766",
+    "SUP-006": {
+      "supplierid": "SUP-006",
+      "suppliername": "Home Essentials Inc.",
+      "contactperson": "David Wong",
+      "phonenumber": "+65 9988 7766",
       "email": "david.wong@homeessentials.com",
-      "products_supplied": "Air Purifier X",
-      "lead_time": "8 days",
+      "productssupplied": "Air Purifier X",
+      "leadtime": "8 days",
       "status": "On Hold",
-      "last_order_date": "2024-09-15"
+      "lastorderdate": "2024-09-15"
     },
-    {
-      "supplier_id": "SUP-007",
-      "supplier_name": "Office Basics",
-      "contact_person": "Emily Chia",
-      "phone_number": "+65 9345 6789",
+    "SUP-007": {
+      "supplierid": "SUP-007",
+      "suppliername": "Office Basics",
+      "contactperson": "Emily Chia",
+      "phonenumber": "+65 9345 6789",
       "email": "emily.chia@officebasics.com",
-      "products_supplied": "Desk Organizer",
-      "lead_time": "3 days",
+      "productssupplied": "Desk Organizer",
+      "leadtime": "3 days",
       "status": "Active",
-      "last_order_date": "2024-10-05"
+      "lastorderdate": "2024-10-05"
     },
-    {
-      "supplier_id": "SUP-008",
-      "supplier_name": "Digital World",
-      "contact_person": "Mark Tan",
-      "phone_number": "+65 9555 1234",
+    "SUP-008": {
+      "supplierid": "SUP-008",
+      "suppliername": "Digital World",
+      "contactperson": "Mark Tan",
+      "phonenumber": "+65 9555 1234",
       "email": "mark.tan@digitalworld.com",
-      "products_supplied": "4K Monitor",
-      "lead_time": "12 days",
+      "productssupplied": "4K Monitor",
+      "leadtime": "12 days",
       "status": "Active",
-      "last_order_date": "2024-09-10"
+      "lastorderdate": "2024-09-10"
     },
-    {
-      "supplier_id": "SUP-009",
-      "supplier_name": "Tech Accessories Ltd",
-      "contact_person": "Zara Ng",
-      "phone_number": "+65 9654 3210",
+    "SUP-009": {
+      "supplierid": "SUP-009",
+      "suppliername": "Tech Accessories Ltd",
+      "contactperson": "Zara Ng",
+      "phonenumber": "+65 9654 3210",
       "email": "zara.ng@techaccessories.com",
-      "products_supplied": "USB-C Hub",
-      "lead_time": "4 days",
+      "productssupplied": "USB-C Hub",
+      "leadtime": "4 days",
       "status": "On Hold",
-      "last_order_date": "2024-09-20"
+      "lastorderdate": "2024-09-20"
     },
-    {
-      "supplier_id": "SUP-010",
-      "supplier_name": "Mobile Gear",
-      "contact_person": "Ronald Lim",
-      "phone_number": "+65 9234 5678",
+    "SUP-010": {
+      "supplierid": "SUP-010",
+      "suppliername": "Mobile Gear",
+      "contactperson": "Ronald Lim",
+      "phonenumber": "+65 9234 5678",
       "email": "ronald.lim@mobilegear.com",
-      "products_supplied": "Wireless Charger",
-      "lead_time": "9 days",
+      "productssupplied": "Wireless Charger",
+      "leadtime": "9 days",
       "status": "Active",
-      "last_order_date": "2024-08-30"
+      "lastorderdate": "2024-08-30"
     }
-  ]
-  
+  }
