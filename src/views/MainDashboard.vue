@@ -106,7 +106,7 @@
             <div class="card-title">
               Stock Levels by Category
             </div>
-            <div style="height: 300px; width: 100%;">
+            <div class="chart-container">
               <canvas id="categoryPieChart" />
             </div>
           </div>
@@ -328,9 +328,17 @@ export default {
         },
         options: {
           responsive: true,
+          maintainAspectRatio: true,
           plugins: {
             legend: {
               position: 'top',
+              labels: {
+              boxWidth: 12,
+              padding: 10,
+              font: {
+                size: 11
+              }
+              }
             },
             tooltip: {
               callbacks: {
@@ -424,6 +432,21 @@ export default {
   padding-left: 13%;
 }
 
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* Creates a square aspect ratio */
+}
+
+.chart-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .dashboard-top,
 .dashboard-bottom {
   display: flex;
@@ -476,6 +499,9 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 300px;
+  max-height: 400px;
+  overflow: hidden;
 }
 
 .restock-card {
