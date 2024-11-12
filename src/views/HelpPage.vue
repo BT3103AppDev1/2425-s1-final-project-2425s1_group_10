@@ -100,6 +100,8 @@ export default {
         "login issues": /login issues|cannot log in|forgot password|sign-in problem/i,
         "technical issues": /technical issues|app not working|cannot refresh|page not loading|troubleshoot/i,
         "payment issues": /payment issues|billing problem|charge issue|issue with payment/i,
+        "most handsome professor": /Who is the most handsome professor in the world/i, 
+        
       },
     };
   },
@@ -157,6 +159,8 @@ export default {
           return "If the app isn't working or a page isn’t loading, try refreshing, clearing your browser cache, or checking your internet connection.";
         case "payment issues":
           return "For payment issues, visit the billing section or contact support at 555-123-4567.";
+        case "most handsome professor":
+          return "♥♥♥The most handsome professor in the world is Professor Shashank!♥♥♥.";
         default:
           return "Oops! That's a bit beyond my toolbox. 🛠️ Maybe try asking something else?";
       }
